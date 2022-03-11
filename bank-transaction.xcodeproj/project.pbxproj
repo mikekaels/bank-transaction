@@ -7,23 +7,61 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E68642217A533F92BDF88D6 /* Pods_bank_transaction.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C40A993CAD9C91FD901D39 /* Pods_bank_transaction.framework */; };
 		BD5C0A5327DA3B61004400E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A5227DA3B61004400E2 /* AppDelegate.swift */; };
 		BD5C0A5527DA3B61004400E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A5427DA3B61004400E2 /* SceneDelegate.swift */; };
-		BD5C0A5727DA3B61004400E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A5627DA3B61004400E2 /* ViewController.swift */; };
-		BD5C0A5A27DA3B61004400E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5C0A5827DA3B61004400E2 /* Main.storyboard */; };
 		BD5C0A5C27DA3B62004400E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5C0A5B27DA3B62004400E2 /* Assets.xcassets */; };
 		BD5C0A5F27DA3B63004400E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5C0A5D27DA3B63004400E2 /* LaunchScreen.storyboard */; };
+		BD5C0A7F27DA42F3004400E2 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A7927DA42F3004400E2 /* TabBarPresenter.swift */; };
+		BD5C0A8027DA42F3004400E2 /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A7A27DA42F3004400E2 /* TabBarRouter.swift */; };
+		BD5C0A8127DA42F3004400E2 /* TabBarModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A7B27DA42F3004400E2 /* TabBarModels.swift */; };
+		BD5C0A8227DA42F3004400E2 /* TabBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A7C27DA42F3004400E2 /* TabBarInteractor.swift */; };
+		BD5C0A8327DA42F3004400E2 /* TabBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A7D27DA42F3004400E2 /* TabBarProtocol.swift */; };
+		BD5C0A8427DA42F3004400E2 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A7E27DA42F3004400E2 /* TabBarVC.swift */; };
+		BD5C0A8827DA45BF004400E2 /* Configures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A8727DA45BF004400E2 /* Configures.swift */; };
+		BD5C0A8A27DA4610004400E2 /* Extension + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A8927DA4610004400E2 /* Extension + UIView.swift */; };
+		BD5C0A8D27DA462F004400E2 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A8C27DA462F004400E2 /* GradientView.swift */; };
+		BD5C0A8F27DA465E004400E2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A8E27DA465E004400E2 /* Colors.swift */; };
+		BD5C0A9127DA466E004400E2 /* Extension + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A9027DA466E004400E2 /* Extension + UIColor.swift */; };
+		BD5C0A9427DA4BD5004400E2 /* ChipsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A9327DA4BD5004400E2 /* ChipsCell.swift */; };
+		BD5C0A9C27DA5078004400E2 /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A9627DA5078004400E2 /* DashboardPresenter.swift */; };
+		BD5C0A9D27DA5078004400E2 /* DashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A9727DA5078004400E2 /* DashboardRouter.swift */; };
+		BD5C0A9E27DA5078004400E2 /* DashboardModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A9827DA5078004400E2 /* DashboardModels.swift */; };
+		BD5C0A9F27DA5078004400E2 /* DashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A9927DA5078004400E2 /* DashboardInteractor.swift */; };
+		BD5C0AA027DA5078004400E2 /* DashboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A9A27DA5078004400E2 /* DashboardProtocol.swift */; };
+		BD5C0AA127DA5078004400E2 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A9B27DA5078004400E2 /* DashboardVC.swift */; };
+		BD5C0AA327DAF59F004400E2 /* Extension + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AA227DAF59F004400E2 /* Extension + UIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06C40A993CAD9C91FD901D39 /* Pods_bank_transaction.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bank_transaction.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08B84CB53269308CA7A2F24E /* Pods-bank-transaction.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bank-transaction.release.xcconfig"; path = "Target Support Files/Pods-bank-transaction/Pods-bank-transaction.release.xcconfig"; sourceTree = "<group>"; };
+		562EB273ED87C28C2B6F7F82 /* Pods-bank-transaction.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bank-transaction.debug.xcconfig"; path = "Target Support Files/Pods-bank-transaction/Pods-bank-transaction.debug.xcconfig"; sourceTree = "<group>"; };
 		BD5C0A4F27DA3B61004400E2 /* bank-transaction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bank-transaction.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5C0A5227DA3B61004400E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD5C0A5427DA3B61004400E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BD5C0A5627DA3B61004400E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BD5C0A5927DA3B61004400E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BD5C0A5B27DA3B62004400E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD5C0A5E27DA3B63004400E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD5C0A6027DA3B63004400E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD5C0A7927DA42F3004400E2 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
+		BD5C0A7A27DA42F3004400E2 /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRouter.swift; sourceTree = "<group>"; };
+		BD5C0A7B27DA42F3004400E2 /* TabBarModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModels.swift; sourceTree = "<group>"; };
+		BD5C0A7C27DA42F3004400E2 /* TabBarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarInteractor.swift; sourceTree = "<group>"; };
+		BD5C0A7D27DA42F3004400E2 /* TabBarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarProtocol.swift; sourceTree = "<group>"; };
+		BD5C0A7E27DA42F3004400E2 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		BD5C0A8727DA45BF004400E2 /* Configures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configures.swift; sourceTree = "<group>"; };
+		BD5C0A8927DA4610004400E2 /* Extension + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIView.swift"; sourceTree = "<group>"; };
+		BD5C0A8C27DA462F004400E2 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		BD5C0A8E27DA465E004400E2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		BD5C0A9027DA466E004400E2 /* Extension + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIColor.swift"; sourceTree = "<group>"; };
+		BD5C0A9327DA4BD5004400E2 /* ChipsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipsCell.swift; sourceTree = "<group>"; };
+		BD5C0A9627DA5078004400E2 /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
+		BD5C0A9727DA5078004400E2 /* DashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRouter.swift; sourceTree = "<group>"; };
+		BD5C0A9827DA5078004400E2 /* DashboardModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModels.swift; sourceTree = "<group>"; };
+		BD5C0A9927DA5078004400E2 /* DashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardInteractor.swift; sourceTree = "<group>"; };
+		BD5C0A9A27DA5078004400E2 /* DashboardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardProtocol.swift; sourceTree = "<group>"; };
+		BD5C0A9B27DA5078004400E2 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
+		BD5C0AA227DAF59F004400E2 /* Extension + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +69,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E68642217A533F92BDF88D6 /* Pods_bank_transaction.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5498AEBA56E42EDECA6B15F6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				562EB273ED87C28C2B6F7F82 /* Pods-bank-transaction.debug.xcconfig */,
+				08B84CB53269308CA7A2F24E /* Pods-bank-transaction.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		BD5C0A4627DA3B61004400E2 = {
 			isa = PBXGroup;
 			children = (
 				BD5C0A5127DA3B61004400E2 /* bank-transaction */,
 				BD5C0A5027DA3B61004400E2 /* Products */,
+				5498AEBA56E42EDECA6B15F6 /* Pods */,
+				D23309F94C3C043227BC0E0E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +106,112 @@
 		BD5C0A5127DA3B61004400E2 /* bank-transaction */ = {
 			isa = PBXGroup;
 			children = (
-				BD5C0A5227DA3B61004400E2 /* AppDelegate.swift */,
-				BD5C0A5427DA3B61004400E2 /* SceneDelegate.swift */,
-				BD5C0A5627DA3B61004400E2 /* ViewController.swift */,
-				BD5C0A5827DA3B61004400E2 /* Main.storyboard */,
+				BD5C0A6927DA3CEF004400E2 /* Extensions */,
+				BD5C0A6A27DA3CF6004400E2 /* Utils */,
+				BD5C0A6827DA3CEB004400E2 /* Core */,
+				BD5C0A6727DA3CE4004400E2 /* Modules */,
+				BD5C0A6627DA3CCC004400E2 /* Commons */,
 				BD5C0A5B27DA3B62004400E2 /* Assets.xcassets */,
 				BD5C0A5D27DA3B63004400E2 /* LaunchScreen.storyboard */,
 				BD5C0A6027DA3B63004400E2 /* Info.plist */,
 			);
 			path = "bank-transaction";
+			sourceTree = "<group>";
+		};
+		BD5C0A6627DA3CCC004400E2 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				BD5C0A8B27DA4623004400E2 /* Views */,
+				BD5C0A5227DA3B61004400E2 /* AppDelegate.swift */,
+				BD5C0A5427DA3B61004400E2 /* SceneDelegate.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		BD5C0A6727DA3CE4004400E2 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				BD5C0A9527DA506A004400E2 /* Dashboard */,
+				BD5C0A7827DA42E1004400E2 /* TabBar */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		BD5C0A6827DA3CEB004400E2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		BD5C0A6927DA3CEF004400E2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BD5C0A8927DA4610004400E2 /* Extension + UIView.swift */,
+				BD5C0A9027DA466E004400E2 /* Extension + UIColor.swift */,
+				BD5C0AA227DAF59F004400E2 /* Extension + UIViewController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BD5C0A6A27DA3CF6004400E2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BD5C0A8727DA45BF004400E2 /* Configures.swift */,
+				BD5C0A8E27DA465E004400E2 /* Colors.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		BD5C0A7827DA42E1004400E2 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				BD5C0A7927DA42F3004400E2 /* TabBarPresenter.swift */,
+				BD5C0A7A27DA42F3004400E2 /* TabBarRouter.swift */,
+				BD5C0A7B27DA42F3004400E2 /* TabBarModels.swift */,
+				BD5C0A7C27DA42F3004400E2 /* TabBarInteractor.swift */,
+				BD5C0A7D27DA42F3004400E2 /* TabBarProtocol.swift */,
+				BD5C0A7E27DA42F3004400E2 /* TabBarVC.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		BD5C0A8B27DA4623004400E2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BD5C0A9227DA4BC3004400E2 /* Cells */,
+				BD5C0A8C27DA462F004400E2 /* GradientView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BD5C0A9227DA4BC3004400E2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BD5C0A9327DA4BD5004400E2 /* ChipsCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		BD5C0A9527DA506A004400E2 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				BD5C0A9627DA5078004400E2 /* DashboardPresenter.swift */,
+				BD5C0A9727DA5078004400E2 /* DashboardRouter.swift */,
+				BD5C0A9827DA5078004400E2 /* DashboardModels.swift */,
+				BD5C0A9927DA5078004400E2 /* DashboardInteractor.swift */,
+				BD5C0A9A27DA5078004400E2 /* DashboardProtocol.swift */,
+				BD5C0A9B27DA5078004400E2 /* DashboardVC.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		D23309F94C3C043227BC0E0E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06C40A993CAD9C91FD901D39 /* Pods_bank_transaction.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +221,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD5C0A6327DA3B63004400E2 /* Build configuration list for PBXNativeTarget "bank-transaction" */;
 			buildPhases = (
+				B6D7A46D22BF673B9BE0AA57 /* [CP] Check Pods Manifest.lock */,
 				BD5C0A4B27DA3B61004400E2 /* Sources */,
 				BD5C0A4C27DA3B61004400E2 /* Frameworks */,
 				BD5C0A4D27DA3B61004400E2 /* Resources */,
+				38CE4C2280146FD65067E548 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,34 +276,85 @@
 			files = (
 				BD5C0A5F27DA3B63004400E2 /* LaunchScreen.storyboard in Resources */,
 				BD5C0A5C27DA3B62004400E2 /* Assets.xcassets in Resources */,
-				BD5C0A5A27DA3B61004400E2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		38CE4C2280146FD65067E548 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bank-transaction/Pods-bank-transaction-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bank-transaction/Pods-bank-transaction-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bank-transaction/Pods-bank-transaction-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6D7A46D22BF673B9BE0AA57 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-bank-transaction-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BD5C0A4B27DA3B61004400E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD5C0A5727DA3B61004400E2 /* ViewController.swift in Sources */,
+				BD5C0A8427DA42F3004400E2 /* TabBarVC.swift in Sources */,
+				BD5C0AA127DA5078004400E2 /* DashboardVC.swift in Sources */,
+				BD5C0A8F27DA465E004400E2 /* Colors.swift in Sources */,
 				BD5C0A5327DA3B61004400E2 /* AppDelegate.swift in Sources */,
+				BD5C0A8127DA42F3004400E2 /* TabBarModels.swift in Sources */,
+				BD5C0A8A27DA4610004400E2 /* Extension + UIView.swift in Sources */,
+				BD5C0A9F27DA5078004400E2 /* DashboardInteractor.swift in Sources */,
+				BD5C0AA027DA5078004400E2 /* DashboardProtocol.swift in Sources */,
+				BD5C0A8D27DA462F004400E2 /* GradientView.swift in Sources */,
+				BD5C0A8827DA45BF004400E2 /* Configures.swift in Sources */,
 				BD5C0A5527DA3B61004400E2 /* SceneDelegate.swift in Sources */,
+				BD5C0A8027DA42F3004400E2 /* TabBarRouter.swift in Sources */,
+				BD5C0A9D27DA5078004400E2 /* DashboardRouter.swift in Sources */,
+				BD5C0A8227DA42F3004400E2 /* TabBarInteractor.swift in Sources */,
+				BD5C0A9E27DA5078004400E2 /* DashboardModels.swift in Sources */,
+				BD5C0AA327DAF59F004400E2 /* Extension + UIViewController.swift in Sources */,
+				BD5C0A9127DA466E004400E2 /* Extension + UIColor.swift in Sources */,
+				BD5C0A9C27DA5078004400E2 /* DashboardPresenter.swift in Sources */,
+				BD5C0A8327DA42F3004400E2 /* TabBarProtocol.swift in Sources */,
+				BD5C0A9427DA4BD5004400E2 /* ChipsCell.swift in Sources */,
+				BD5C0A7F27DA42F3004400E2 /* TabBarPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BD5C0A5827DA3B61004400E2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BD5C0A5927DA3B61004400E2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BD5C0A5D27DA3B63004400E2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -284,16 +484,17 @@
 		};
 		BD5C0A6427DA3B63004400E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 562EB273ED87C28C2B6F7F82 /* Pods-bank-transaction.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RMQNS23DVX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "bank-transaction/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -311,16 +512,17 @@
 		};
 		BD5C0A6527DA3B63004400E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08B84CB53269308CA7A2F24E /* Pods-bank-transaction.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RMQNS23DVX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "bank-transaction/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
