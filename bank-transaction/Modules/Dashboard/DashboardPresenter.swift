@@ -9,7 +9,9 @@ class DashboardPresenter: DashboardViewToPresenterProtocol {
     var router: DashboardPresenterToRouterProtocol?
     var interactor: DashboardPresenterToInteractorProtocol?
     
-    
+    func goToTransfer(from: DashboardVC) {
+        router?.goToTransfer(from: from)
+    }
 }
 
 extension DashboardPresenter: DashboardInteractorToPresenterProtocol {

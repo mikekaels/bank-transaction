@@ -14,6 +14,7 @@ class TabBarVC: UITabBarController {
         delegate = self
         view.backgroundColor = .systemBackground
         tabBar.layer.backgroundColor = UIColor.systemBackground.cgColor
+        tabBar.tintColor = Colors.accent1
         setupVCs()
     }
     

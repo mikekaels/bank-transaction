@@ -17,8 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
        
-        window?.rootViewController = TabBarRouter().createModule()
-
+        window?.rootViewController = LoginRouter.shared.createModule()
         
         window?.makeKeyAndVisible()
         window?.windowScene = windowsScene

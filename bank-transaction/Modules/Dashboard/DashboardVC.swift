@@ -12,14 +12,24 @@ class DashboardVC: UIViewController {
     public var delegate: DashboardDelegate?
     
     var topUpItem: [String] = ["NETSPay", "SingTel Dash", "WeChat Pay", "Huawei Pay", "GrabPay"]
-    var youOweToYourFriend: [String] = ["Sarah", "Jennifer Laurance", "Ken"]
+    var billsItem: [String] = ["Electricity", "Water", "Phone Providers"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = ""
         setupUI()
+        
+        self.transactionTableView.items = [
+            Transaction(transactionID: "622af34561fe0bade6959ac1", amount: 2.5, transactionDate: "2022-03-11T06:59:17.841Z", datumDescription: "haha", transactionType:  nil, receipient: nil),
+            Transaction(transactionID: "622af34561fe0bade6959ac1", amount: 2.5, transactionDate: "2022-03-11T06:59:17.841Z", datumDescription: "haha", transactionType:  nil, receipient: nil),
+            Transaction(transactionID: "622af34561fe0bade6959ac1", amount: 2.5, transactionDate: "2022-03-11T06:59:17.841Z", datumDescription: "haha", transactionType:  nil, receipient: nil)
+        ]
+        
         self.topUpCollection.dataSource = self
         self.topUpCollection.delegate = self
+        
+        self.billsCollection.dataSource = self
+        self.billsCollection.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,14 +51,14 @@ class DashboardVC: UIViewController {
     let container: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
-        view.spacing = 40
+        view.spacing = 50
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     let greetingLabel: UILabel = UILabel()
         .configure { v in
-            v.text = "Hello Mike,"
+            v.text = "Hello Steve,"
             v.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
             v.textAlignment = .left
             v.textColor = Colors.titleDark
@@ -62,6 +72,7 @@ class DashboardVC: UIViewController {
             v.setTitleColor(Colors.accent1, for: .normal)
             v.semanticContentAttribute = .forceRightToLeft
             v.setImage(UIImage(systemName: "chevron.right.circle.fill"), for: .normal)
+            v.imageView?.tintColor = Colors.accent1
             v.translatesAutoresizingMaskIntoConstraints = false
 //            v.addTarget(self, action: #selector(groupSelectTapped), for: .touchUpInside)
         }
@@ -120,7 +131,7 @@ class DashboardVC: UIViewController {
             v.translatesAutoresizingMaskIntoConstraints = false
         }
     
-    let lblPayBill: UILabel = UILabel()
+    let lblBill: UILabel = UILabel()
         .configure { v in
             v.text = "Pay Bill"
             v.font = UIFont.systemFont(ofSize: 12, weight: .regular)
@@ -134,12 +145,79 @@ class DashboardVC: UIViewController {
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(ChipsCell.self, forCellWithReuseIdentifier: "ChipsCell")
+        cv.register(ChipsCell.self, forCellWithReuseIdentifier: Identifiers.TopUpCell)
         cv.showsHorizontalScrollIndicator = false
         cv.showsVerticalScrollIndicator = false
         cv.backgroundColor = .clear
         return cv
     }()
+    
+    let billsCollection: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.register(ChipsCell.self, forCellWithReuseIdentifier: Identifiers.BillsCell)
+        cv.showsHorizontalScrollIndicator = false
+        cv.showsVerticalScrollIndicator = false
+        cv.backgroundColor = .clear
+        return cv
+    }()
+    
+    let btnTransfer: UIButton = UIButton()
+        .configure { v in
+            v.setImage(UIImage(systemName: "repeat"), for: .normal)
+            v.tintColor = Colors.accent1
+            v.backgroundColor = Colors.accent2
+            v.layer.cornerRadius = 13
+            v.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            v.widthAnchor.constraint(equalToConstant: 50).isActive = true
+            v.translatesAutoresizingMaskIntoConstraints = false
+            v.addTarget(self, action: #selector(transferTapped), for: .touchUpInside)
+        }
+    
+    let lblTransfer: UILabel = UILabel()
+        .configure { v in
+            v.text = "Transfer"
+            v.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+            v.textAlignment = .center
+            v.textColor = Colors.titleDark
+            v.translatesAutoresizingMaskIntoConstraints = false
+        }
+    
+    let transactionTableView = TransactionTableViewController(items: [], configure: { (cell: SubtitleAndIconCell, item: Transaction) in
+//        cell.selectionStyle = .none
+        cell.lItem.text = "Hello"
+//        cell.viewbackground.backgroundColor = UIColor.colorWith(name: item.colorBackgroud!)
+//        cell.lblUser.textColor = UIColor.colorWith(name: item.colorText!)
+    }) { (item) in
+        print(item)
+    }.configure { v in
+        v.tableView.isScrollEnabled = false
+        v.tableView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    let lblTransaction: UILabel = UILabel()
+        .configure { v in
+            v.text = "Your Transaction History"
+            v.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+            v.textAlignment = .left
+            v.textColor = Colors.titleDark
+            v.translatesAutoresizingMaskIntoConstraints = false
+        }
+    
+    let lblSeeAll: UIButton = UIButton()
+        .configure { v in
+            v.setTitle("See All", for: .normal)
+            v.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+            v.setTitleColor(Colors.accent1, for: .normal)
+            v.translatesAutoresizingMaskIntoConstraints = false
+//            v.addTarget(self, action: #selector(UpcomingSeeAllButtonTapped), for: .touchUpInside)
+        }
+    
+    @objc func transferTapped() {
+        presentor?.goToTransfer(from: self)
+    }
 
 }
 
@@ -189,7 +267,52 @@ extension DashboardVC {
         topUpCollection.trailingAnchor.constraint(equalTo: mainCard.trailingAnchor).isActive = true
         topUpCollection.heightAnchor.constraint(equalToConstant: 34).isActive = true
         
-        [v1, mainCard].forEach {container.addArrangedSubview($0)}
+        mainCard.addSubview(lblBill)
+        lblBill.topAnchor.constraint(equalTo: topUpCollection.bottomAnchor, constant: 15).isActive = true
+        lblBill.leadingAnchor.constraint(equalTo: mainCard.leadingAnchor, constant: 20).isActive = true
+        
+        mainCard.addSubview(billsCollection)
+        billsCollection.topAnchor.constraint(equalTo: lblBill.bottomAnchor, constant: 5).isActive = true
+        billsCollection.leadingAnchor.constraint(equalTo: mainCard.leadingAnchor, constant: 0).isActive = true
+        billsCollection.trailingAnchor.constraint(equalTo: mainCard.trailingAnchor).isActive = true
+        billsCollection.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        
+        let v3: UIStackView = UIStackView().configure { v in
+            v.spacing = 15
+            v.axis = .vertical
+            v.distribution = .fill
+            v.alignment = .center
+            v.contentMode = .scaleToFill
+            
+            [btnTransfer].forEach { v.addArrangedSubview($0)}
+            btnTransfer.topAnchor.constraint(equalTo: v.topAnchor, constant: 10).isActive = true
+            
+            v.addSubview(lblTransfer)
+            lblTransfer.topAnchor.constraint(equalTo: btnTransfer.bottomAnchor, constant: 5).isActive = true
+            lblTransfer.centerXAnchor.constraint(equalTo: btnTransfer.centerXAnchor).isActive = true
+            
+        }
+        
+        let v4: UIView = UIView().configure { v in
+            v.heightAnchor.constraint(equalToConstant: 200).isActive = true
+            v.translatesAutoresizingMaskIntoConstraints = false
+            
+            v.addSubview(lblTransaction)
+            lblTransaction.topAnchor.constraint(equalTo: v.topAnchor, constant: 20).isActive = true
+            lblTransaction.leadingAnchor.constraint(equalTo: v.leadingAnchor).isActive = true
+            
+            v.addSubview(lblSeeAll)
+            lblSeeAll.topAnchor.constraint(equalTo: v.topAnchor, constant: 20).isActive = true
+            lblSeeAll.trailingAnchor.constraint(equalTo: v.trailingAnchor).isActive = true
+            
+            v.addSubview(transactionTableView.view)
+            transactionTableView.view.topAnchor.constraint(equalTo: lblTransaction.bottomAnchor, constant: 10).isActive = true
+            transactionTableView.view.trailingAnchor.constraint(equalTo: v.trailingAnchor).isActive = true
+            transactionTableView.view.heightAnchor.constraint(equalToConstant: 200).isActive = true
+            transactionTableView.view.leadingAnchor.constraint(equalTo: v.leadingAnchor).isActive = true
+        }
+        
+        [v1, mainCard, v3, v4].forEach {container.addArrangedSubview($0)}
         
     }
     
@@ -231,19 +354,19 @@ extension DashboardVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
                 return CGSize(width: topUpItem[indexPath.item].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)]).width + 30, height: 34)
                 
             }
-//        case youOweToYourFriendCollection:
-//
-//            if youOweToYourFriend[indexPath.item].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)]).width + 20 < 80 {
-//
-//                return CGSize(width: 88, height: 34)
-//
-//            } else {
-//
-//                return CGSize(width: youOweToYourFriend[indexPath.item].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)]).width + 20, height: 34)
-//
-//            }
+        case billsCollection:
+
+            if billsItem[indexPath.item].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)]).width + 20 < 80 {
+
+                return CGSize(width: 88, height: 34)
+
+            } else {
+
+                return CGSize(width: billsItem[indexPath.item].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)]).width + 20, height: 34)
+
+            }
         default:
-            return CGSize(width: 88, height: 34)
+            return CGSize(width: 100, height: 34)
         }
     }
     
@@ -251,8 +374,8 @@ extension DashboardVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
         switch collectionView {
         case topUpCollection:
             return topUpItem.count
-//        case youOweToYourFriendCollection:
-//            return youOweToYourFriend.count
+        case billsCollection:
+            return billsItem.count
         default:
             return 0
         }
@@ -261,13 +384,13 @@ extension DashboardVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
         case topUpCollection:
-            let cell = topUpCollection.dequeueReusableCell(withReuseIdentifier: "ChipsCell", for: indexPath) as! ChipsCell
+            let cell = topUpCollection.dequeueReusableCell(withReuseIdentifier: Identifiers.TopUpCell, for: indexPath) as! ChipsCell
             cell.lUser.text = topUpItem[indexPath.row]
             return cell
-//        case youOweToYourFriendCollection:
-//            let cell = youOweToYourFriendCollection.dequeueReusableCell(withReuseIdentifier: "youOweToYourFriend", for: indexPath) as! MainCardCell
-//            cell.lUser.text = youOweToYourFriend[indexPath.row]
-//            return cell
+        case billsCollection:
+            let cell = billsCollection.dequeueReusableCell(withReuseIdentifier: Identifiers.BillsCell, for: indexPath) as! ChipsCell
+            cell.lUser.text = billsItem[indexPath.row]
+            return cell
         default:
             return UICollectionViewCell()
         }
