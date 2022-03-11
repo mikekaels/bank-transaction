@@ -38,4 +38,10 @@ public class LoginRouter: LoginPresenterToRouterProtocol{
         vc.modalTransitionStyle = .flipHorizontal
         from.present(vc, animated: true, completion: nil)
     }
+    
+    func goToRegister(from: LoginVC) {
+        let vc = RegisterRouter.shared.createModule()
+//        from.present(vc, animated: true, completion: nil)
+        from.navigationController?.pushViewController(vc, animated: true)
+    }
 }

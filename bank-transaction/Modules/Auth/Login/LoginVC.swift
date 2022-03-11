@@ -17,6 +17,10 @@ class LoginVC: UIViewController {
         setupUI()
     }
     
+    deinit {
+        print("Login VC has been dealocated")
+    }
+    
     //MARK: - PROPERTIES
     var password: String = ""
     var username: String = ""
@@ -37,6 +41,14 @@ class LoginVC: UIViewController {
             
         }
     
+    let btnRegister = UIButton()
+        .configure { v in
+            v.setTitle("Register", for: .normal)
+            v.setTitleColor(Colors.accent1, for: .normal)
+            v.backgroundColor = .clear
+            v.addTarget(self, action: #selector(registerTapped), for: .touchUpInside)
+        }
+    
     let btnLogin = CustomButton()
         .configure { v in
             v.setTitle("Login", for: .normal)
@@ -49,12 +61,15 @@ class LoginVC: UIViewController {
         guard let password = tfPassword.texfield.text else { return }
         presentor?.login(username: username, password: password)
     }
+    
+    @objc func registerTapped() {
+        presentor?.goToRegister(from: self)
+    }
 }
 
 
 extension LoginVC: LoginPresenterToViewProtocol {
     func didSuccessLogin(data: LoginModel) {
-        print("here")
         presentor?.goToDashboard(from: self)
     }
     
@@ -73,7 +88,7 @@ extension LoginVC {
         ivLogo.snp.makeConstraints { make in
             make.width.height.equalTo(250)
             make.centerX.equalTo(view)
-            make.top.equalTo(view).offset(100)
+            make.top.equalTo(view).offset(50)
         }
         
         view.addSubview(tfUsername)
@@ -88,10 +103,18 @@ extension LoginVC {
             make.leading.trailing.equalTo(view).offset(50).inset(50)
         }
         
+        view.addSubview(btnRegister)
+        btnRegister.snp.makeConstraints { make in
+            make.bottom.equalTo(view).inset(50)
+            make.leading.trailing.equalTo(view).offset(36).inset(36)
+        }
+        
         view.addSubview(btnLogin)
         btnLogin.snp.makeConstraints { make in
             make.leading.trailing.equalTo(view).offset(36).inset(36)
-            make.bottom.equalTo(view).inset(50)
+            make.bottom.equalTo(btnRegister).inset(50)
         }
+        
+        
     }
 }

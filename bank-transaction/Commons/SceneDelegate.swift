@@ -14,10 +14,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowsScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(frame: UIScreen.main.bounds)
         
-       
-        window?.rootViewController = LoginRouter.shared.createModule()
+        window = UIWindow(frame: UIScreen.main.bounds)
+
+        
+        
+        let loggedIn = true
+        
+        if loggedIn {
+            window?.rootViewController = TabBarRouter.shared.createModule()
+        } else {
+            let navRootView = UINavigationController(rootViewController: LoginRouter.shared.createModule())
+            window?.rootViewController = navRootView
+        }
         
         window?.makeKeyAndVisible()
         window?.windowScene = windowsScene

@@ -18,6 +18,10 @@ class LoginPresenter: LoginViewToPresenterProtocol {
     func goToDashboard(from: LoginVC) {
         router?.goToDashboard(from: from)
     }
+    
+    func goToRegister(from: LoginVC) {
+        router?.goToRegister(from: from)
+    }
 }
 
 extension LoginPresenter: LoginInteractorToPresenterProtocol {

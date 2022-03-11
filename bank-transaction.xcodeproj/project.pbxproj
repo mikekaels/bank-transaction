@@ -57,6 +57,19 @@
 		BD5C0AE027DB60D1004400E2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0ADF27DB60D1004400E2 /* CustomButton.swift */; };
 		BD5C0AE227DB6B33004400E2 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AE127DB6B33004400E2 /* Login.swift */; };
 		BD5C0AE427DB6B5B004400E2 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AE327DB6B5B004400E2 /* APIManager.swift */; };
+		BD5C0AEC27DB7194004400E2 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AE627DB7194004400E2 /* ProfilePresenter.swift */; };
+		BD5C0AED27DB7194004400E2 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AE727DB7194004400E2 /* ProfileRouter.swift */; };
+		BD5C0AEE27DB7194004400E2 /* ProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AE827DB7194004400E2 /* ProfileModels.swift */; };
+		BD5C0AEF27DB7194004400E2 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AE927DB7194004400E2 /* ProfileInteractor.swift */; };
+		BD5C0AF027DB7194004400E2 /* ProfileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AEA27DB7194004400E2 /* ProfileProtocol.swift */; };
+		BD5C0AF127DB7194004400E2 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AEB27DB7194004400E2 /* ProfileVC.swift */; };
+		BD5C0AF927DBC95B004400E2 /* SelectReceiverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AF327DBC95B004400E2 /* SelectReceiverPresenter.swift */; };
+		BD5C0AFA27DBC95B004400E2 /* SelectReceiverRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AF427DBC95B004400E2 /* SelectReceiverRouter.swift */; };
+		BD5C0AFB27DBC95B004400E2 /* SelectReceiverModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AF527DBC95B004400E2 /* SelectReceiverModels.swift */; };
+		BD5C0AFC27DBC95B004400E2 /* SelectReceiverInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AF627DBC95B004400E2 /* SelectReceiverInteractor.swift */; };
+		BD5C0AFD27DBC95B004400E2 /* SelectReceiverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AF727DBC95B004400E2 /* SelectReceiverProtocol.swift */; };
+		BD5C0AFE27DBC95B004400E2 /* SelectReceiverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AF827DBC95B004400E2 /* SelectReceiverVC.swift */; };
+		BD5C0B0027DBCEB8004400E2 /* Receiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AFF27DBCEB8004400E2 /* Receiver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +127,19 @@
 		BD5C0ADF27DB60D1004400E2 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		BD5C0AE127DB6B33004400E2 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		BD5C0AE327DB6B5B004400E2 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		BD5C0AE627DB7194004400E2 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		BD5C0AE727DB7194004400E2 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		BD5C0AE827DB7194004400E2 /* ProfileModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModels.swift; sourceTree = "<group>"; };
+		BD5C0AE927DB7194004400E2 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		BD5C0AEA27DB7194004400E2 /* ProfileProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProtocol.swift; sourceTree = "<group>"; };
+		BD5C0AEB27DB7194004400E2 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		BD5C0AF327DBC95B004400E2 /* SelectReceiverPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectReceiverPresenter.swift; sourceTree = "<group>"; };
+		BD5C0AF427DBC95B004400E2 /* SelectReceiverRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectReceiverRouter.swift; sourceTree = "<group>"; };
+		BD5C0AF527DBC95B004400E2 /* SelectReceiverModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectReceiverModels.swift; sourceTree = "<group>"; };
+		BD5C0AF627DBC95B004400E2 /* SelectReceiverInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectReceiverInteractor.swift; sourceTree = "<group>"; };
+		BD5C0AF727DBC95B004400E2 /* SelectReceiverProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectReceiverProtocol.swift; sourceTree = "<group>"; };
+		BD5C0AF827DBC95B004400E2 /* SelectReceiverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectReceiverVC.swift; sourceTree = "<group>"; };
+		BD5C0AFF27DBCEB8004400E2 /* Receiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receiver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,8 +187,8 @@
 				BD5C0A6927DA3CEF004400E2 /* Extensions */,
 				BD5C0A6A27DA3CF6004400E2 /* Utils */,
 				BD5C0A6827DA3CEB004400E2 /* Core */,
-				BD5C0A6727DA3CE4004400E2 /* Modules */,
 				BD5C0A6627DA3CCC004400E2 /* Commons */,
+				BD5C0A6727DA3CE4004400E2 /* Modules */,
 				BD5C0A5B27DA3B62004400E2 /* Assets.xcassets */,
 				BD5C0A5D27DA3B63004400E2 /* LaunchScreen.storyboard */,
 				BD5C0A6027DA3B63004400E2 /* Info.plist */,
@@ -184,6 +210,7 @@
 		BD5C0A6727DA3CE4004400E2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				BD5C0AE527DB7176004400E2 /* Profile */,
 				BD5C0ABF27DB4961004400E2 /* Auth */,
 				BD5C0AB227DB4703004400E2 /* Transfer */,
 				BD5C0A9527DA506A004400E2 /* Dashboard */,
@@ -280,6 +307,7 @@
 			children = (
 				BD5C0AB027DB42FD004400E2 /* Transaction.swift */,
 				BD5C0AE127DB6B33004400E2 /* Login.swift */,
+				BD5C0AFF27DBCEB8004400E2 /* Receiver.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -287,6 +315,7 @@
 		BD5C0AB227DB4703004400E2 /* Transfer */ = {
 			isa = PBXGroup;
 			children = (
+				BD5C0AF227DBC942004400E2 /* SelectReceiver */,
 				BD5C0AB327DB4713004400E2 /* TransferPresenter.swift */,
 				BD5C0AB427DB4713004400E2 /* TransferRouter.swift */,
 				BD5C0AB527DB4713004400E2 /* TransferModels.swift */,
@@ -346,6 +375,32 @@
 				BD5C0ADF27DB60D1004400E2 /* CustomButton.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		BD5C0AE527DB7176004400E2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BD5C0AE627DB7194004400E2 /* ProfilePresenter.swift */,
+				BD5C0AE727DB7194004400E2 /* ProfileRouter.swift */,
+				BD5C0AE827DB7194004400E2 /* ProfileModels.swift */,
+				BD5C0AE927DB7194004400E2 /* ProfileInteractor.swift */,
+				BD5C0AEA27DB7194004400E2 /* ProfileProtocol.swift */,
+				BD5C0AEB27DB7194004400E2 /* ProfileVC.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		BD5C0AF227DBC942004400E2 /* SelectReceiver */ = {
+			isa = PBXGroup;
+			children = (
+				BD5C0AF327DBC95B004400E2 /* SelectReceiverPresenter.swift */,
+				BD5C0AF427DBC95B004400E2 /* SelectReceiverRouter.swift */,
+				BD5C0AF527DBC95B004400E2 /* SelectReceiverModels.swift */,
+				BD5C0AF627DBC95B004400E2 /* SelectReceiverInteractor.swift */,
+				BD5C0AF727DBC95B004400E2 /* SelectReceiverProtocol.swift */,
+				BD5C0AF827DBC95B004400E2 /* SelectReceiverVC.swift */,
+			);
+			path = SelectReceiver;
 			sourceTree = "<group>";
 		};
 		D23309F94C3C043227BC0E0E /* Frameworks */ = {
@@ -475,7 +530,10 @@
 				BD5C0ABC27DB4713004400E2 /* TransferInteractor.swift in Sources */,
 				BD5C0AA127DA5078004400E2 /* DashboardVC.swift in Sources */,
 				BD5C0ADD27DB5370004400E2 /* CustomTextfield.swift in Sources */,
+				BD5C0AF127DB7194004400E2 /* ProfileVC.swift in Sources */,
 				BD5C0A8F27DA465E004400E2 /* Colors.swift in Sources */,
+				BD5C0AF927DBC95B004400E2 /* SelectReceiverPresenter.swift in Sources */,
+				BD5C0AFE27DBC95B004400E2 /* SelectReceiverVC.swift in Sources */,
 				BD5C0ABD27DB4713004400E2 /* TransferProtocol.swift in Sources */,
 				BD5C0ABE27DB4713004400E2 /* TransferVC.swift in Sources */,
 				BD5C0A5327DA3B61004400E2 /* AppDelegate.swift in Sources */,
@@ -483,19 +541,24 @@
 				BD5C0A8127DA42F3004400E2 /* TabBarModels.swift in Sources */,
 				BD5C0A8A27DA4610004400E2 /* Extension + UIView.swift in Sources */,
 				BD5C0AD627DB4990004400E2 /* RegisterRouter.swift in Sources */,
+				BD5C0AEE27DB7194004400E2 /* ProfileModels.swift in Sources */,
 				BD5C0AD927DB4990004400E2 /* RegisterProtocol.swift in Sources */,
 				BD5C0AD527DB4990004400E2 /* RegisterPresenter.swift in Sources */,
 				BD5C0ACB27DB4984004400E2 /* LoginModels.swift in Sources */,
 				BD5C0AD827DB4990004400E2 /* RegisterInteractor.swift in Sources */,
 				BD5C0AE227DB6B33004400E2 /* Login.swift in Sources */,
+				BD5C0AEF27DB7194004400E2 /* ProfileInteractor.swift in Sources */,
 				BD5C0A9F27DA5078004400E2 /* DashboardInteractor.swift in Sources */,
+				BD5C0AFC27DBC95B004400E2 /* SelectReceiverInteractor.swift in Sources */,
 				BD5C0AA027DA5078004400E2 /* DashboardProtocol.swift in Sources */,
+				BD5C0AED27DB7194004400E2 /* ProfileRouter.swift in Sources */,
 				BD5C0AD727DB4990004400E2 /* RegisterModels.swift in Sources */,
 				BD5C0A8D27DA462F004400E2 /* GradientView.swift in Sources */,
 				BD5C0A8827DA45BF004400E2 /* Configures.swift in Sources */,
 				BD5C0AA527DB37C8004400E2 /* Identifiers.swift in Sources */,
 				BD5C0AA727DB3E49004400E2 /* SubtitleAndIconCell.swift in Sources */,
 				BD5C0A5527DA3B61004400E2 /* SceneDelegate.swift in Sources */,
+				BD5C0AEC27DB7194004400E2 /* ProfilePresenter.swift in Sources */,
 				BD5C0A8027DA42F3004400E2 /* TabBarRouter.swift in Sources */,
 				BD5C0AB127DB42FD004400E2 /* Transaction.swift in Sources */,
 				BD5C0ACD27DB4984004400E2 /* LoginProtocol.swift in Sources */,
@@ -503,12 +566,16 @@
 				BD5C0AE027DB60D1004400E2 /* CustomButton.swift in Sources */,
 				BD5C0ACE27DB4984004400E2 /* LoginVC.swift in Sources */,
 				BD5C0ABB27DB4713004400E2 /* TransferModels.swift in Sources */,
+				BD5C0AFD27DBC95B004400E2 /* SelectReceiverProtocol.swift in Sources */,
+				BD5C0B0027DBCEB8004400E2 /* Receiver.swift in Sources */,
 				BD5C0ACC27DB4984004400E2 /* LoginInteractor.swift in Sources */,
 				BD5C0A8227DA42F3004400E2 /* TabBarInteractor.swift in Sources */,
 				BD5C0ABA27DB4713004400E2 /* TransferRouter.swift in Sources */,
+				BD5C0AFA27DBC95B004400E2 /* SelectReceiverRouter.swift in Sources */,
 				BD5C0A9E27DA5078004400E2 /* DashboardModels.swift in Sources */,
 				BD5C0AA327DAF59F004400E2 /* Extension + UIViewController.swift in Sources */,
 				BD5C0A9127DA466E004400E2 /* Extension + UIColor.swift in Sources */,
+				BD5C0AFB27DBC95B004400E2 /* SelectReceiverModels.swift in Sources */,
 				BD5C0A9C27DA5078004400E2 /* DashboardPresenter.swift in Sources */,
 				BD5C0A8327DA42F3004400E2 /* TabBarProtocol.swift in Sources */,
 				BD5C0A9427DA4BD5004400E2 /* ChipsCell.swift in Sources */,
@@ -517,6 +584,7 @@
 				BD5C0ADA27DB4990004400E2 /* RegisterVC.swift in Sources */,
 				BD5C0AAC27DB40F7004400E2 /* TransactionTableViewController.swift in Sources */,
 				BD5C0AB927DB4713004400E2 /* TransferPresenter.swift in Sources */,
+				BD5C0AF027DB7194004400E2 /* ProfileProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

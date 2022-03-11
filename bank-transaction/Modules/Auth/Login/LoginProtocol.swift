@@ -15,11 +15,13 @@ protocol LoginViewToPresenterProtocol: AnyObject {
     
     func login(username: String, password: String)
     func goToDashboard(from: LoginVC)
+    func goToRegister(from: LoginVC)
 }
 
 protocol LoginPresenterToRouterProtocol: AnyObject {
     func createModule() -> LoginVC
     func goToDashboard(from: LoginVC)
+    func goToRegister(from: LoginVC)
 }
 
 protocol LoginPresenterToViewProtocol: AnyObject {

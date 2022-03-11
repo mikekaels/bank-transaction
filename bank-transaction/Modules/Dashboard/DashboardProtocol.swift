@@ -14,11 +14,15 @@ protocol DashboardViewToPresenterProtocol: AnyObject {
     var router: DashboardPresenterToRouterProtocol? { get set }
     
     func goToTransfer(from: DashboardVC)
+    func goToProfile(from: DashboardVC)
+    func goToLogin(from: DashboardVC)
 }
 
 protocol DashboardPresenterToRouterProtocol: AnyObject {
     func createModule() -> DashboardVC
     func goToTransfer(from: DashboardVC)
+    func goToProfile(from: DashboardVC)
+    func goToLogin(from: DashboardVC)
 }
 
 protocol DashboardPresenterToViewProtocol: AnyObject {

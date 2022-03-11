@@ -21,4 +21,11 @@ class APIManager {
                completion: @escaping(Result<LoginModel, CustomError>) -> Void) {
         completion(.success(LoginModel(status: nil, token: nil, username: nil, accountNo: nil)))
     }
+    
+    func transfer(receipientAccountNo: String,
+               amount: Float,
+               description: String,
+               completion: @escaping(Result<Transfer, CustomError>) -> Void) {
+        completion(.success(Transfer(status: nil, transactionID: nil, amount: nil, receiverDescription: nil, recipientAccount: nil)))
+    }
 }

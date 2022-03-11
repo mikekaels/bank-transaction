@@ -36,4 +36,25 @@ public class DashboardRouter: DashboardPresenterToRouterProtocol{
         let vc = TransferRouter.shared.createModule()
         from.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func goToProfile(from: DashboardVC) {
+        let vc = ProfileRouter.shared.createModule()
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.medium()]
+        }
+        
+        vc.delegate = from
+        from.present(vc, animated: true, completion: nil)
+    }
+    
+    func goToLogin(from: DashboardVC) {
+        let vc = LoginRouter.shared.createModule()
+        let navRootView = UINavigationController(rootViewController: vc)
+        navRootView.modalPresentationStyle = .fullScreen
+        navRootView.modalTransitionStyle = .flipHorizontal
+        
+        from.dismiss(animated: true) {
+            from.present(navRootView, animated: true)
+        }
+    }
 }

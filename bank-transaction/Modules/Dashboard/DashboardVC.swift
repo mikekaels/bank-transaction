@@ -35,11 +35,16 @@ class DashboardVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideNavigationBar(animated: animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         showNavigationBar(animated: animated)
+    }
+    
+    deinit {
+        print("Dashboard VC has been dealocated")
     }
     
     let scrollView: UIScrollView = {
@@ -90,7 +95,7 @@ class DashboardVC: UIViewController {
             v.layer.cornerRadius = 25
             v.layer.masksToBounds = true
             v.translatesAutoresizingMaskIntoConstraints = false
-//            v.addTarget(self, action: #selector(profileTapped), for: .touchUpInside)
+            v.addTarget(self, action: #selector(profileTapped), for: .touchUpInside)
         }
     
     let mainCard: GradientView = GradientView(gradientStartColor:Colors.background1,
@@ -218,11 +223,21 @@ class DashboardVC: UIViewController {
     @objc func transferTapped() {
         presentor?.goToTransfer(from: self)
     }
+    
+    @objc func profileTapped() {
+        presentor?.goToProfile(from: self)
+    }
 
 }
 
 extension DashboardVC: DashboardPresenterToViewProtocol {
     
+}
+
+extension DashboardVC: ProfileDelegate {
+    func logout() {
+        presentor?.goToLogin(from: self)
+    }
 }
 
 extension DashboardVC {

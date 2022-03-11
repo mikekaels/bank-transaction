@@ -12,6 +12,14 @@ class DashboardPresenter: DashboardViewToPresenterProtocol {
     func goToTransfer(from: DashboardVC) {
         router?.goToTransfer(from: from)
     }
+    
+    func goToProfile(from: DashboardVC) {
+        router?.goToProfile(from: from)
+    }
+    
+    func goToLogin(from: DashboardVC) {
+        router?.goToLogin(from: from)
+    }
 }
 
 extension DashboardPresenter: DashboardInteractorToPresenterProtocol {

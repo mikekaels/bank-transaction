@@ -11,4 +11,6 @@ enum Identifiers {
     static let TopUpCell = "TopUpCell"
     static let BillsCell = "BillsCell"
     static let TransactionCell = "TransactionCell"
+    static let ProfileItemCell = "ProfileItemCell"
+    static let ReceiverCell = "ReceiverCell"
 }

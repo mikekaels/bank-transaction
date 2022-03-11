@@ -21,6 +21,7 @@ class CustomButton: UIButton {
 
 extension CustomButton {
     func setupUI() {
+        self.backgroundColor = Colors.accent1
         self.snp.makeConstraints { make in
             make.height.equalTo(50)
         }

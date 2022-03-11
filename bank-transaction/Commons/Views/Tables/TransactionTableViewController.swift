@@ -38,6 +38,7 @@ class TransactionTableViewController<T, Cell: UITableViewCell>: UITableViewContr
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.TransactionCell, for: indexPath) as! SubtitleAndIconCell
         let item = items[indexPath.row]
+        cell.selectionStyle = .none
         configure(cell, item)
         return cell
     }
