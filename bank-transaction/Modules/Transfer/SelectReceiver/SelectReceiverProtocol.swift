@@ -5,7 +5,7 @@
 //  Created by Santo Michael Sihombing on 12/03/22.
 
 public protocol SelectReceiverDelegate {
-    func didSelectReceiver(data: Receiver)
+    func didSelectReceiver(data: Payee)
 }
 
 protocol SelectReceiverViewToPresenterProtocol: AnyObject {
@@ -13,7 +13,8 @@ protocol SelectReceiverViewToPresenterProtocol: AnyObject {
     var interactor: SelectReceiverPresenterToInteractorProtocol? { get set }
     var router: SelectReceiverPresenterToRouterProtocol? { get set }
     
-    func didSelectReceiver(data: Receiver, from: SelectReceiverVC)
+    func didSelectReceiver(data: Payee, from: SelectReceiverVC)
+    func getPayees()
 }
 
 protocol SelectReceiverPresenterToRouterProtocol: AnyObject {
@@ -22,14 +23,15 @@ protocol SelectReceiverPresenterToRouterProtocol: AnyObject {
 }
 
 protocol SelectReceiverPresenterToViewProtocol: AnyObject {
-
+    func didSuccessGetPayees(data: [Payee])
+    func didFailedGetPayees(error: CustomError)
 }
 
 protocol SelectReceiverInteractorToPresenterProtocol: AnyObject {
-
+    func didGetPayees(result: Result<PayeesResponse, CustomError>)
 }
 
 protocol SelectReceiverPresenterToInteractorProtocol: AnyObject {
     var presenter: SelectReceiverInteractorToPresenterProtocol? { get set }
-
+    func getPayees()
 }

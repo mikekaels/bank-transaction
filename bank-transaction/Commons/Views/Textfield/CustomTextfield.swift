@@ -16,7 +16,6 @@ enum CustomTextfieldType {
 
 class CustomTextfield: UIView {
     
-    
     var type: CustomTextfieldType
     
     let label = UILabel()
@@ -25,9 +24,15 @@ class CustomTextfield: UIView {
             v.font = UIFont.systemFont(ofSize: 12, weight: .light)
         }
     
+    let errorLabel = UILabel()
+        .configure { v in
+            v.textColor = Colors.red
+            v.textAlignment = .right
+            v.font = UIFont.systemFont(ofSize: 10, weight: .light)
+        }
+    
     let texfield = UITextField()
         .configure { v in
-            v.placeholder = ""
             v.backgroundColor = .systemGray6
             v.layer.cornerRadius = 12
             v.heightAnchor.constraint(equalToConstant: 40).isActive = true
@@ -36,7 +41,7 @@ class CustomTextfield: UIView {
             v.leftView = view
             v.leftViewMode = .always
         }
-
+    
     required init(label: String, type: CustomTextfieldType = .text) {
         self.label.text = label
         self.type = type
@@ -56,6 +61,15 @@ class CustomTextfield: UIView {
 }
 
 extension CustomTextfield {
+    
+    func setError(message: String) {
+        self.errorLabel.text = "* \(message)"
+    }
+    
+    func clearError() {
+        self.errorLabel.text = ""
+    }
+    
     func setupUI() {
         self.layer.borderWidth = 0
         self.layer.borderColor = Colors.accent1.cgColor
@@ -66,6 +80,12 @@ extension CustomTextfield {
         
         addSubview(label)
         label.snp.makeConstraints { make in
+            make.top.equalTo(self).offset(5)
+            make.leading.trailing.equalTo(self).offset(20).inset(5)
+        }
+        
+        addSubview(errorLabel)
+        errorLabel.snp.makeConstraints { make in
             make.top.equalTo(self).offset(5)
             make.leading.trailing.equalTo(self).offset(20).inset(5)
         }

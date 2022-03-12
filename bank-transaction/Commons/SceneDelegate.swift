@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         
         
-        let loggedIn = true
+        let loggedIn = UserDefaultsManager.shared.isLoggedIn()
         
         if loggedIn {
             window?.rootViewController = TabBarRouter.shared.createModule()

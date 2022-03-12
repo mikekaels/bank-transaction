@@ -21,10 +21,7 @@ class LoginVC: UIViewController {
         print("Login VC has been dealocated")
     }
     
-    //MARK: - PROPERTIES
-    var password: String = ""
-    var username: String = ""
-    
+//MARK: - PROPERTIES
     let ivLogo = UIImageView()
         .configure { v in
             v.contentMode = .scaleAspectFill
@@ -32,14 +29,8 @@ class LoginVC: UIViewController {
         }
     
     let tfUsername = CustomTextfield(label: "Username", type: .username)
-        .configure { v in
-            
-        }
-    
+
     let tfPassword = CustomTextfield(label: "Password", type: .password)
-        .configure { v in
-            
-        }
     
     let btnRegister = UIButton()
         .configure { v in
@@ -56,10 +47,14 @@ class LoginVC: UIViewController {
             v.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
         }
     
+//MARK: - Function
     @objc func loginTapped() {
-        guard let username = tfUsername.texfield.text else { return }
-        guard let password = tfPassword.texfield.text else { return }
-        presentor?.login(username: username, password: password)
+        let username = validatorUsername()
+        let password = validatorPassword()
+        
+        if username.isValid && password.isValid {
+            presentor?.login(username: username.text, password: password.text)
+        }
     }
     
     @objc func registerTapped() {
@@ -67,19 +62,17 @@ class LoginVC: UIViewController {
     }
 }
 
-
+//MARK: - Delegate
 extension LoginVC: LoginPresenterToViewProtocol {
-    func didSuccessLogin(data: LoginModel) {
+    func didSuccessLogin(data: AuthModel) {
         presentor?.goToDashboard(from: self)
     }
     
     func didFailedLogin(error: CustomError) {
         
     }
-    
-    
 }
-
+//MARK: - View
 extension LoginVC {
     func setupUI() {
         view.backgroundColor = .white
@@ -94,13 +87,13 @@ extension LoginVC {
         view.addSubview(tfUsername)
         tfUsername.snp.makeConstraints { make in
             make.top.equalTo(ivLogo.snp_bottomMargin).offset(30)
-            make.leading.trailing.equalTo(view).offset(50).inset(50)
+            make.leading.trailing.equalTo(view).offset(36).inset(36)
         }
         
         view.addSubview(tfPassword)
         tfPassword.snp.makeConstraints { make in
             make.top.equalTo(tfUsername.snp_bottomMargin).offset(10)
-            make.leading.trailing.equalTo(view).offset(50).inset(50)
+            make.leading.trailing.equalTo(view).offset(36).inset(36)
         }
         
         view.addSubview(btnRegister)
@@ -116,5 +109,34 @@ extension LoginVC {
         }
         
         
+    }
+}
+
+//MARK: - VALIDATORS
+extension LoginVC {
+    func validatorUsername() -> (isValid: Bool, text: String) {
+        if let username = tfUsername.texfield.text {
+            if username.count == 0 {
+                self.tfUsername.setError(message: "Username required")
+                return (false, "")
+            } else {
+                self.tfUsername.clearError()
+                return (true, username)
+            }
+        }
+        return (false, "")
+    }
+    
+    func validatorPassword() -> (isValid: Bool, text: String) {
+        if let password = tfPassword.texfield.text {
+            if password.count == 0 {
+                self.tfPassword.setError(message: "Password required")
+                return (false, "")
+            } else {
+                self.tfPassword.clearError()
+                return (true, password)
+            }
+        }
+        return (false, "")
     }
 }

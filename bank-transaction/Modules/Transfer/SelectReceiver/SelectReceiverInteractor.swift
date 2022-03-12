@@ -7,3 +7,11 @@
 class SelectReceiverInteractor: SelectReceiverPresenterToInteractorProtocol {
     weak var presenter: SelectReceiverInteractorToPresenterProtocol?
 }
+
+extension SelectReceiverInteractor {
+    func getPayees() {
+        APIManager.shared.getPayees { [weak self] result in
+            self?.presenter?.didGetPayees(result: result)
+        }
+    }
+}

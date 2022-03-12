@@ -17,6 +17,7 @@ class TransferVC: UIViewController {
         title = "Transfer"
         
         setupUI()
+        self.lblBalanceAmount.text = String(self.balance)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -24,6 +25,10 @@ class TransferVC: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.tabBarController?.tabBar.isHidden = true
     }
+    
+//MARK: - PROPERTIES
+    var payee: Payee?
+    var balance: Float = 0
     
     let lblBalance = UILabel()
         .configure { v in
@@ -41,6 +46,18 @@ class TransferVC: UIViewController {
             v.textColor = Colors.titleDark
         }
     
+    let receiverView = UIStackView()
+        .configure { v in
+            v.spacing = 20
+            v.axis = .horizontal
+            v.backgroundColor = Colors.titleLight
+            v.layer.cornerRadius = 15
+            v.layer.masksToBounds = true
+            v.distribution = .fill
+            v.alignment = .center
+            v.contentMode = .scaleToFill
+        }
+    
     let ivReceiver = UIImageView()
         .configure { v in
             v.kf.setImage(with: URL(string: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"))
@@ -55,7 +72,7 @@ class TransferVC: UIViewController {
     
     let btnReceiver = UILabel()
         .configure { v in
-            v.text = "Jane Sihombing"
+            v.text = "Select Payee"
             v.textAlignment = .left
             v.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
             v.textColor = Colors.accent1
@@ -111,13 +128,31 @@ class TransferVC: UIViewController {
     }
     
     @objc func continueTapped() {
-        presentor?.transfer(receipientAccountNo: "nil", amount: 20, description: "nil")
+        
+        guard let accountNo = self.payee?.accountNo else {
+            print("Got 1")
+            return
+        }
+        
+        guard let amount = self.tfAmount.text, let newAmount = Float(amount) else {
+            print("Got 2")
+            return
+        }
+        
+        guard let description = self.self.tfNote.texfield.text else {
+            print("Got 3")
+            return
+        }
+        
+        print(newAmount, type(of: newAmount))
+        presentor?.transfer(receipientAccountNo: accountNo, amount: newAmount, description: description)
     }
 
 }
 
 extension TransferVC: TransferPresenterToViewProtocol {
     func didSuccessTransfer(data: Transfer) {
+        print("SUCCESS!!!!!!")
         presentor?.goBack(from: self)
     }
     
@@ -129,14 +164,20 @@ extension TransferVC: TransferPresenterToViewProtocol {
 }
 
 extension TransferVC: SelectReceiverDelegate {
-    func didSelectReceiver(data: Receiver) {
-        print(data)
+    func didSelectReceiver(data: Payee) {
+        self.payee = data
+        DispatchQueue.main.async { [weak self] in
+            self?.btnReceiver.text = self?.payee?.name
+            self?.receiverView.backgroundColor = Colors.accent2
+        }
     }
 }
 
 extension TransferVC {
     func setupUI() {
         view.backgroundColor = .white
+        let tap = UITapGestureRecognizer(target: self, action: #selector(selectReceverTapper))
+        receiverView.addGestureRecognizer(tap)
         
         view.addSubview(lblBalance)
         lblBalance.snp.makeConstraints { make in
@@ -150,19 +191,6 @@ extension TransferVC {
             make.leading.trailing.equalTo(view).offset(36).inset(36)
         }
         
-        let receiverView = UIStackView()
-            .configure { v in
-                v.spacing = 20
-                v.axis = .horizontal
-                v.backgroundColor = Colors.accent2
-                v.layer.cornerRadius = 15
-                v.layer.masksToBounds = true
-                v.distribution = .fill
-                v.alignment = .center
-                v.contentMode = .scaleToFill
-                let tap = UITapGestureRecognizer(target: self, action: #selector(selectReceverTapper))
-                v.addGestureRecognizer(tap)
-            }
         
         view.addSubview(receiverView)
         receiverView.snp.makeConstraints { make in

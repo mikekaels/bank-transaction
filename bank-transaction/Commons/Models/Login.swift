@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct LoginModel: Codable {
+struct AuthModel: Codable {
     let status, token, username, accountNo: String?
 }

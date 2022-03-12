@@ -1,12 +1,14 @@
 PODS:
   - Alamofire (5.5.0)
   - IQKeyboardManagerSwift (6.5.9)
+  - KeychainAccess (4.2.2)
   - Kingfisher (7.1.2)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.5)
   - IQKeyboardManagerSwift
+  - KeychainAccess
   - Kingfisher (~> 7.0)
   - SnapKit (~> 5.0.0)
 
@@ -14,15 +16,17 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - IQKeyboardManagerSwift
+    - KeychainAccess
     - Kingfisher
     - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 525fa0d4205b9d5be07b41d58015c105b4f2fa1d
+PODFILE CHECKSUM: 5673a2edaf6d436cad649d991cb61b9ad37f30f9
 
 COCOAPODS: 1.11.2

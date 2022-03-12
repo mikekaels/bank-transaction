@@ -16,6 +16,9 @@ protocol LoginViewToPresenterProtocol: AnyObject {
     func login(username: String, password: String)
     func goToDashboard(from: LoginVC)
     func goToRegister(from: LoginVC)
+    
+    
+    func checkTextfield(text: String) -> (isValid: Bool?, text: String?)
 }
 
 protocol LoginPresenterToRouterProtocol: AnyObject {
@@ -25,12 +28,12 @@ protocol LoginPresenterToRouterProtocol: AnyObject {
 }
 
 protocol LoginPresenterToViewProtocol: AnyObject {
-    func didSuccessLogin(data: LoginModel)
+    func didSuccessLogin(data: AuthModel)
     func didFailedLogin(error: CustomError)
 }
 
 protocol LoginInteractorToPresenterProtocol: AnyObject {
-    func didLogin(result: Result<LoginModel, CustomError>)
+    func didLogin(result: Result<AuthModel, CustomError>)
 }
 
 protocol LoginPresenterToInteractorProtocol: AnyObject {

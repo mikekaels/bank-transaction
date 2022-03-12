@@ -13,27 +13,36 @@ protocol DashboardViewToPresenterProtocol: AnyObject {
     var interactor: DashboardPresenterToInteractorProtocol? { get set }
     var router: DashboardPresenterToRouterProtocol? { get set }
     
-    func goToTransfer(from: DashboardVC)
+    func goToTransfer(balance: Float, from: DashboardVC)
     func goToProfile(from: DashboardVC)
     func goToLogin(from: DashboardVC)
+    
+    func getBalance()
+    func getTransactions()
 }
 
 protocol DashboardPresenterToRouterProtocol: AnyObject {
     func createModule() -> DashboardVC
-    func goToTransfer(from: DashboardVC)
+    func goToTransfer(balance: Float, from: DashboardVC)
     func goToProfile(from: DashboardVC)
     func goToLogin(from: DashboardVC)
 }
 
 protocol DashboardPresenterToViewProtocol: AnyObject {
-
+    func didSuccessGetBalance(data: Balance)
+    func didFailedGetBalance(error: CustomError)
+    
+    func didSuccessGetTransaction(data: [Transaction])
+    func didFailedGetTransaction(error: CustomError)
 }
 
 protocol DashboardInteractorToPresenterProtocol: AnyObject {
-
+    func didGetBalance(result: Result<Balance, CustomError>)
+    func didGetTransactions(result: Result<TransactionResponse, CustomError>)
 }
 
 protocol DashboardPresenterToInteractorProtocol: AnyObject {
     var presenter: DashboardInteractorToPresenterProtocol? { get set }
-
+    func getBalance()
+    func getTransactions()
 }

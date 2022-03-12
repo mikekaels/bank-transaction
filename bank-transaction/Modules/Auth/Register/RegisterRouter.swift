@@ -31,4 +31,8 @@ public class RegisterRouter: RegisterPresenterToRouterProtocol{
         
         return view
     }
+    
+    func dismiss(from: RegisterVC) {
+        from.navigationController?.popViewController(animated: true)
+    }
 }

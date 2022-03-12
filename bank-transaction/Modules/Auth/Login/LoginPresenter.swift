@@ -22,13 +22,25 @@ class LoginPresenter: LoginViewToPresenterProtocol {
     func goToRegister(from: LoginVC) {
         router?.goToRegister(from: from)
     }
+    
+    func checkTextfield(text: String) -> (isValid: Bool?, text: String?) {
+        if text.count == 0 {
+            return (false, "")
+        } else {
+            return (true, text)
+        }
+    }
 }
 
 extension LoginPresenter: LoginInteractorToPresenterProtocol {
-    func didLogin(result: Result<LoginModel, CustomError>) {
+    func didLogin(result: Result<AuthModel, CustomError>) {
         switch result {
-        case .success(let login):
-            view?.didSuccessLogin(data: login)
+        case .success(let data):
+            KeyChainStore.insertKeyChain(withKey: .token, token: data.token ?? "")
+            UserDefaultsManager.shared.setUsername(with: data.username ?? "")
+            UserDefaultsManager.shared.setAccountNumber(with: data.accountNo ?? "")
+            UserDefaultsManager.shared.setLoggedIn(with: true)
+            view?.didSuccessLogin(data: data)
         case .failure(let error):
             view?.didFailedLogin(error: error)
         }

@@ -20,7 +20,7 @@ class SubtitleAndIconCell: UITableViewCell {
     
     let icon: UIImageView = UIImageView()
         .configure { v in
-            v.image = UIImage(systemName: "cart.fill")
+            v.image = UIImage(systemName: "wake.circle.fill")
             v.tintColor = Colors.accent1
             v.translatesAutoresizingMaskIntoConstraints = false
             v.contentMode = .scaleAspectFit
@@ -37,7 +37,7 @@ class SubtitleAndIconCell: UITableViewCell {
             v.translatesAutoresizingMaskIntoConstraints = false
         }
     
-    let lDate = UILabel()
+    let lAccount = UILabel()
         .configure { v in
             v.text = "14 Oct"
             v.font = UIFont.systemFont(ofSize: 12, weight: .medium)
@@ -77,9 +77,9 @@ class SubtitleAndIconCell: UITableViewCell {
         lItem.leadingAnchor.constraint(equalTo: bg.trailingAnchor, constant: 20).isActive = true
         lItem.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         
-        contentView.addSubview(lDate)
-        lDate.leadingAnchor.constraint(equalTo: bg.trailingAnchor, constant: 20).isActive = true
-        lDate.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+        contentView.addSubview(lAccount)
+        lAccount.leadingAnchor.constraint(equalTo: bg.trailingAnchor, constant: 20).isActive = true
+        lAccount.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
         
         contentView.addSubview(lPrice)
         lPrice.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true

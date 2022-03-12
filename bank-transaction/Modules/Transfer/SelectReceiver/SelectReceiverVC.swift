@@ -17,33 +17,49 @@ class SelectReceiverVC: UIViewController {
         setupUI()
         tableView.delegate = self
         tableView.dataSource = self
-        receivers = [
-            Receiver(id: nil, name: nil, accountNo: nil)
-        ]
+        fetchData()
     }
     
-    var receivers: [Receiver] = [Receiver]()
+    var payees: [Payee] = [Payee]()
     
     let tableView = UITableView()
         .configure { v in
             v.register(ReceiverCell.self, forCellReuseIdentifier: Identifiers.ReceiverCell)
             
         }
+    
+    func fetchData() {
+        presentor?.getPayees()
+    }
 
 }
 
 extension SelectReceiverVC: SelectReceiverPresenterToViewProtocol {
+    func didSuccessGetPayees(data: [Payee]) {
+        self.payees = data
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+    
+    func didFailedGetPayees(error: CustomError) {
+        
+    }
+    
     
 }
 
 extension SelectReceiverVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return receivers.count
+        return payees.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.ReceiverCell, for: indexPath) as! ReceiverCell
+        let payee = self.payees[indexPath.row]
+        cell.lblName.text = payee.name
+        cell.lblAccountNumber.text = payee.accountNo
         return cell
     }
     
@@ -52,7 +68,7 @@ extension SelectReceiverVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = receivers[indexPath.row]
+        let data = payees[indexPath.row]
         presentor?.didSelectReceiver(data: data, from: self)
     }
 }

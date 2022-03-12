@@ -13,23 +13,21 @@ class DashboardVC: UIViewController {
     
     var topUpItem: [String] = ["NETSPay", "SingTel Dash", "WeChat Pay", "Huawei Pay", "GrabPay"]
     var billsItem: [String] = ["Electricity", "Water", "Phone Providers"]
+    
+    var balance: Float = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = ""
         setupUI()
-        
-        self.transactionTableView.items = [
-            Transaction(transactionID: "622af34561fe0bade6959ac1", amount: 2.5, transactionDate: "2022-03-11T06:59:17.841Z", datumDescription: "haha", transactionType:  nil, receipient: nil),
-            Transaction(transactionID: "622af34561fe0bade6959ac1", amount: 2.5, transactionDate: "2022-03-11T06:59:17.841Z", datumDescription: "haha", transactionType:  nil, receipient: nil),
-            Transaction(transactionID: "622af34561fe0bade6959ac1", amount: 2.5, transactionDate: "2022-03-11T06:59:17.841Z", datumDescription: "haha", transactionType:  nil, receipient: nil)
-        ]
-        
+        print("TOKEN: ",KeyChainStore.fetchKeyChain(withKey: .token))
         self.topUpCollection.dataSource = self
         self.topUpCollection.delegate = self
         
         self.billsCollection.dataSource = self
         self.billsCollection.delegate = self
+        
+        getData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -191,8 +189,9 @@ class DashboardVC: UIViewController {
         }
     
     let transactionTableView = TransactionTableViewController(items: [], configure: { (cell: SubtitleAndIconCell, item: Transaction) in
-//        cell.selectionStyle = .none
-        cell.lItem.text = "Hello"
+        cell.lItem.text = item.receipient?.accountHolder
+        cell.lPrice.text = item.amount?.description
+        cell.lAccount.text = item.receipient?.accountNo
 //        cell.viewbackground.backgroundColor = UIColor.colorWith(name: item.colorBackgroud!)
 //        cell.lblUser.textColor = UIColor.colorWith(name: item.colorText!)
     }) { (item) in
@@ -221,16 +220,58 @@ class DashboardVC: UIViewController {
         }
     
     @objc func transferTapped() {
-        presentor?.goToTransfer(from: self)
+        presentor?.goToTransfer(balance: self.balance, from: self)
     }
     
     @objc func profileTapped() {
         presentor?.goToProfile(from: self)
     }
+    
+    func getData() {
+        let username = UserDefaultsManager.shared.getUsername()
+        let accountNumber = UserDefaultsManager.shared.getAccountNumber()
+        presentor?.getBalance()
+        presentor?.getTransactions()
+        
+        DispatchQueue.main.async {
+            self.greetingLabel.text = "Hello \(username)"
+            self.selectAccount.setTitle("Account No: \(accountNumber)", for: .normal)
+        }
+    }
 
 }
 
 extension DashboardVC: DashboardPresenterToViewProtocol {
+    func didSuccessGetTransaction(data: [Transaction]) {
+        var newData = [Transaction]()
+        if data.count >= 3 {
+            for i in 0...2 {
+                newData.append(data[i])
+            }
+        } else {
+            newData.append(contentsOf: data)
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.transactionTableView.items = newData
+        }
+    }
+    
+    func didFailedGetTransaction(error: CustomError) {
+        print("DATA: ERROR: ",error)
+    }
+    
+    func didSuccessGetBalance(data: Balance) {
+        print("BALANCE: ",data)
+        self.balance = data.balance ?? 0.0
+        DispatchQueue.main.async { [weak self] in
+            self?.lblBalanceAmount.text = "\(String(describing: data.balance ?? 999999))"
+        }
+    }
+    
+    func didFailedGetBalance(error: CustomError) {
+        
+    }
+    
     
 }
 
@@ -373,11 +414,11 @@ extension DashboardVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
 
             if billsItem[indexPath.item].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)]).width + 20 < 80 {
 
-                return CGSize(width: 88, height: 34)
+                return CGSize(width: 100, height: 34)
 
             } else {
 
-                return CGSize(width: billsItem[indexPath.item].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)]).width + 20, height: 34)
+                return CGSize(width: billsItem[indexPath.item].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)]).width + 30, height: 34)
 
             }
         default:

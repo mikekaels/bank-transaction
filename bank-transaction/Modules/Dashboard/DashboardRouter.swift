@@ -32,8 +32,9 @@ public class DashboardRouter: DashboardPresenterToRouterProtocol{
         return view
     }
     
-    func goToTransfer(from: DashboardVC) {
+    func goToTransfer(balance: Float, from: DashboardVC) {
         let vc = TransferRouter.shared.createModule()
+        vc.balance = balance
         from.navigationController?.pushViewController(vc, animated: true)
     }
     

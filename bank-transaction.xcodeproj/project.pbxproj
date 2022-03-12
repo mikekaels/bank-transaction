@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		0E68642217A533F92BDF88D6 /* Pods_bank_transaction.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C40A993CAD9C91FD901D39 /* Pods_bank_transaction.framework */; };
+		BD58D50427DD03C6007A547C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58D50327DD03C6007A547C /* Router.swift */; };
+		BD58D50627DD0420007A547C /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58D50527DD0420007A547C /* Service.swift */; };
+		BD58D50827DD0574007A547C /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58D50727DD0574007A547C /* Reachability.swift */; };
+		BD58D50A27DD058A007A547C /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58D50927DD058A007A547C /* Alertable.swift */; };
+		BD58D50C27DD06C0007A547C /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58D50B27DD06C0007A547C /* Keychain.swift */; };
+		BD58D50E27DD0C36007A547C /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58D50D27DD0C36007A547C /* UserDefault.swift */; };
+		BD58D51027DD1056007A547C /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58D50F27DD1056007A547C /* Balance.swift */; };
+		BD58D51227DD2012007A547C /* Payees.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58D51127DD2011007A547C /* Payees.swift */; };
+		BD58D51427DD2890007A547C /* Transfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58D51327DD2890007A547C /* Transfer.swift */; };
+		BD58D51627DD414E007A547C /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58D51527DD414E007A547C /* Register.swift */; };
 		BD5C0A5327DA3B61004400E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A5227DA3B61004400E2 /* AppDelegate.swift */; };
 		BD5C0A5527DA3B61004400E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0A5427DA3B61004400E2 /* SceneDelegate.swift */; };
 		BD5C0A5C27DA3B62004400E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5C0A5B27DA3B62004400E2 /* Assets.xcassets */; };
@@ -76,6 +86,16 @@
 		06C40A993CAD9C91FD901D39 /* Pods_bank_transaction.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bank_transaction.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		08B84CB53269308CA7A2F24E /* Pods-bank-transaction.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bank-transaction.release.xcconfig"; path = "Target Support Files/Pods-bank-transaction/Pods-bank-transaction.release.xcconfig"; sourceTree = "<group>"; };
 		562EB273ED87C28C2B6F7F82 /* Pods-bank-transaction.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bank-transaction.debug.xcconfig"; path = "Target Support Files/Pods-bank-transaction/Pods-bank-transaction.debug.xcconfig"; sourceTree = "<group>"; };
+		BD58D50327DD03C6007A547C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		BD58D50527DD0420007A547C /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		BD58D50727DD0574007A547C /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		BD58D50927DD058A007A547C /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
+		BD58D50B27DD06C0007A547C /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		BD58D50D27DD0C36007A547C /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		BD58D50F27DD1056007A547C /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
+		BD58D51127DD2011007A547C /* Payees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payees.swift; sourceTree = "<group>"; };
+		BD58D51327DD2890007A547C /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
+		BD58D51527DD414E007A547C /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		BD5C0A4F27DA3B61004400E2 /* bank-transaction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bank-transaction.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5C0A5227DA3B61004400E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD5C0A5427DA3B61004400E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -223,6 +243,8 @@
 			isa = PBXGroup;
 			children = (
 				BD5C0AE327DB6B5B004400E2 /* APIManager.swift */,
+				BD58D50327DD03C6007A547C /* Router.swift */,
+				BD58D50527DD0420007A547C /* Service.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -243,6 +265,10 @@
 				BD5C0A8727DA45BF004400E2 /* Configures.swift */,
 				BD5C0A8E27DA465E004400E2 /* Colors.swift */,
 				BD5C0AA427DB37C8004400E2 /* Identifiers.swift */,
+				BD58D50727DD0574007A547C /* Reachability.swift */,
+				BD58D50927DD058A007A547C /* Alertable.swift */,
+				BD58D50B27DD06C0007A547C /* Keychain.swift */,
+				BD58D50D27DD0C36007A547C /* UserDefault.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -308,6 +334,10 @@
 				BD5C0AB027DB42FD004400E2 /* Transaction.swift */,
 				BD5C0AE127DB6B33004400E2 /* Login.swift */,
 				BD5C0AFF27DBCEB8004400E2 /* Receiver.swift */,
+				BD58D50F27DD1056007A547C /* Balance.swift */,
+				BD58D51127DD2011007A547C /* Payees.swift */,
+				BD58D51327DD2890007A547C /* Transfer.swift */,
+				BD58D51527DD414E007A547C /* Register.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -529,6 +559,7 @@
 				BD5C0A8427DA42F3004400E2 /* TabBarVC.swift in Sources */,
 				BD5C0ABC27DB4713004400E2 /* TransferInteractor.swift in Sources */,
 				BD5C0AA127DA5078004400E2 /* DashboardVC.swift in Sources */,
+				BD58D51627DD414E007A547C /* Register.swift in Sources */,
 				BD5C0ADD27DB5370004400E2 /* CustomTextfield.swift in Sources */,
 				BD5C0AF127DB7194004400E2 /* ProfileVC.swift in Sources */,
 				BD5C0A8F27DA465E004400E2 /* Colors.swift in Sources */,
@@ -538,6 +569,10 @@
 				BD5C0ABE27DB4713004400E2 /* TransferVC.swift in Sources */,
 				BD5C0A5327DA3B61004400E2 /* AppDelegate.swift in Sources */,
 				BD5C0ACA27DB4984004400E2 /* LoginRouter.swift in Sources */,
+				BD58D50627DD0420007A547C /* Service.swift in Sources */,
+				BD58D50E27DD0C36007A547C /* UserDefault.swift in Sources */,
+				BD58D51027DD1056007A547C /* Balance.swift in Sources */,
+				BD58D50827DD0574007A547C /* Reachability.swift in Sources */,
 				BD5C0A8127DA42F3004400E2 /* TabBarModels.swift in Sources */,
 				BD5C0A8A27DA4610004400E2 /* Extension + UIView.swift in Sources */,
 				BD5C0AD627DB4990004400E2 /* RegisterRouter.swift in Sources */,
@@ -550,7 +585,9 @@
 				BD5C0AEF27DB7194004400E2 /* ProfileInteractor.swift in Sources */,
 				BD5C0A9F27DA5078004400E2 /* DashboardInteractor.swift in Sources */,
 				BD5C0AFC27DBC95B004400E2 /* SelectReceiverInteractor.swift in Sources */,
+				BD58D50427DD03C6007A547C /* Router.swift in Sources */,
 				BD5C0AA027DA5078004400E2 /* DashboardProtocol.swift in Sources */,
+				BD58D51427DD2890007A547C /* Transfer.swift in Sources */,
 				BD5C0AED27DB7194004400E2 /* ProfileRouter.swift in Sources */,
 				BD5C0AD727DB4990004400E2 /* RegisterModels.swift in Sources */,
 				BD5C0A8D27DA462F004400E2 /* GradientView.swift in Sources */,
@@ -576,10 +613,13 @@
 				BD5C0AA327DAF59F004400E2 /* Extension + UIViewController.swift in Sources */,
 				BD5C0A9127DA466E004400E2 /* Extension + UIColor.swift in Sources */,
 				BD5C0AFB27DBC95B004400E2 /* SelectReceiverModels.swift in Sources */,
+				BD58D50C27DD06C0007A547C /* Keychain.swift in Sources */,
+				BD58D50A27DD058A007A547C /* Alertable.swift in Sources */,
 				BD5C0A9C27DA5078004400E2 /* DashboardPresenter.swift in Sources */,
 				BD5C0A8327DA42F3004400E2 /* TabBarProtocol.swift in Sources */,
 				BD5C0A9427DA4BD5004400E2 /* ChipsCell.swift in Sources */,
 				BD5C0AE427DB6B5B004400E2 /* APIManager.swift in Sources */,
+				BD58D51227DD2012007A547C /* Payees.swift in Sources */,
 				BD5C0A7F27DA42F3004400E2 /* TabBarPresenter.swift in Sources */,
 				BD5C0ADA27DB4990004400E2 /* RegisterVC.swift in Sources */,
 				BD5C0AAC27DB40F7004400E2 /* TransactionTableViewController.swift in Sources */,

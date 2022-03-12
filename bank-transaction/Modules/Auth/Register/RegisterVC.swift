@@ -17,12 +17,10 @@ class RegisterVC: UIViewController {
     }
     
     deinit {
-        print("Login VC has been dealocated")
+        print("Register VC has been dealocated")
     }
     
     //MARK: - PROPERTIES
-    var password: String = ""
-    var username: String = ""
     
     let ivLogo = UIImageView()
         .configure { v in
@@ -40,7 +38,7 @@ class RegisterVC: UIViewController {
             
         }
     
-    let tfConfirmPassword = CustomTextfield(label: "Confirm Password", type: .password)
+    let tfPasswordConfirmation = CustomTextfield(label: "Confirm Password", type: .password)
         .configure { v in
             
         }
@@ -49,22 +47,27 @@ class RegisterVC: UIViewController {
         .configure { v in
             v.setTitle("Register", for: .normal)
             v.backgroundColor = Colors.accent1
-            v.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
+            v.addTarget(self, action: #selector(registerTapped), for: .touchUpInside)
         }
     
-    @objc func loginTapped() {
-        guard let username = tfUsername.texfield.text else { return }
-        guard let password = tfPassword.texfield.text else { return }
-//        presentor?.login(username: username, password: password)
-    }
-    
     @objc func registerTapped() {
-//        presentor?.goToRegister(from: self)
+        let username = validatorUsername()
+        let password = validatorPasswordAndConfirmation()
+        if username.isValid && password.isValid {
+            presentor?.register(username: username.text, password: password.text)
+        }
     }
-
 }
 
 extension RegisterVC: RegisterPresenterToViewProtocol {
+    func didSuccessRegister(data: AuthModel) {
+        presentor?.dismiss(from: self)
+    }
+    
+    func didFailedRegister(error: CustomError) {
+        
+    }
+    
     
 }
 
@@ -84,19 +87,19 @@ extension RegisterVC {
         view.addSubview(tfUsername)
         tfUsername.snp.makeConstraints { make in
             make.top.equalTo(ivLogo.snp_bottomMargin).offset(30)
-            make.leading.trailing.equalTo(view).offset(50).inset(50)
+            make.leading.trailing.equalTo(view).offset(36).inset(36)
         }
         
         view.addSubview(tfPassword)
         tfPassword.snp.makeConstraints { make in
             make.top.equalTo(tfUsername.snp_bottomMargin).offset(10)
-            make.leading.trailing.equalTo(view).offset(50).inset(50)
+            make.leading.trailing.equalTo(view).offset(36).inset(36)
         }
         
-        view.addSubview(tfConfirmPassword)
-        tfConfirmPassword.snp.makeConstraints { make in
+        view.addSubview(tfPasswordConfirmation)
+        tfPasswordConfirmation.snp.makeConstraints { make in
             make.top.equalTo(tfPassword.snp_bottomMargin).offset(10)
-            make.leading.trailing.equalTo(view).offset(50).inset(50)
+            make.leading.trailing.equalTo(view).offset(36).inset(36)
         }
         
         view.addSubview(btnRegister)
@@ -109,3 +112,61 @@ extension RegisterVC {
     }
 }
 
+
+//MARK: - VALIDATORS
+extension RegisterVC {
+    func validatorUsername() -> (isValid: Bool, text: String) {
+        if let username = tfUsername.texfield.text {
+            if username.count == 0 {
+                self.tfUsername.setError(message: "Username required")
+                return (false, "")
+            } else {
+                self.tfUsername.clearError()
+                return (true, username)
+            }
+        }
+        return (false, "")
+    }
+    
+    func validatorPassword() -> (isValid: Bool, text: String) {
+        if let password = tfPassword.texfield.text {
+            if password.count == 0 {
+                self.tfPassword.setError(message: "Password required")
+                return (false, "")
+            } else {
+                self.tfPassword.clearError()
+                return (true, password)
+            }
+        }
+        return (false, "")
+    }
+    
+    func validatorPasswordConfirmation() -> (isValid: Bool, text: String) {
+        if let password = tfPasswordConfirmation.texfield.text {
+            if password.count == 0 {
+                self.tfPasswordConfirmation.setError(message: "Confirmation required")
+                return (false, "")
+            } else {
+                self.tfPasswordConfirmation.clearError()
+                return (true, password)
+            }
+        }
+        return (false, "")
+    }
+    
+    func validatorPasswordAndConfirmation() -> (isValid: Bool, text: String) {
+        let password = validatorPassword()
+        let passwordConfirmation = validatorPasswordConfirmation()
+        
+        if password.text.count != 0 && passwordConfirmation.text.count != 0 {
+            if password.text != passwordConfirmation.text {
+                self.tfPasswordConfirmation.setError(message: "Password and Confirmation are not same")
+                return (false, "")
+            } else {
+                self.tfPasswordConfirmation.clearError()
+                return (true, password.text)
+            }
+        }
+        return (false, "")
+    }
+}
