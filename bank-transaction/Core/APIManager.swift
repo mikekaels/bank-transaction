@@ -27,7 +27,7 @@ class APIManager {
                 try APIRouter
                     .login(username: username, password: password)
                     .request(usingHttpService: httpService)
-                    .responseJSON { result in
+                    .response { result in
                         guard [200, 201].contains(result.response?.statusCode), let data = result.data else { return }
                         do {
                             let result = try JSONDecoder().decode(AuthModel.self, from: data)
@@ -54,7 +54,7 @@ class APIManager {
                 try APIRouter
                     .register(username: username, password: password)
                     .request(usingHttpService: httpService)
-                    .responseJSON { result in
+                    .response { result in
                         guard [200, 201].contains(result.response?.statusCode), let data = result.data else { return }
                         do {
                             let result = try JSONDecoder().decode(AuthModel.self, from: data)
@@ -79,11 +79,10 @@ class APIManager {
                 try APIRouter
                     .getBalance
                     .request(usingHttpService: httpService)
-                    .responseJSON { result in
+                    .response { result in
                         guard [200, 201].contains(result.response?.statusCode), let data = result.data else { return }
                         do {
                             let result = try JSONDecoder().decode(Balance.self, from: data)
-                            print(result)
                             completion(.success(result))
                         } catch {
                             print(error)
@@ -104,18 +103,15 @@ class APIManager {
         if !Connectivity.isConnectedToInternet {
             completion(.failure(.noInternetConnection))
         } else {
+            
             do {
                 try APIRouter
-                    .transfer(receipientAccountNo: receipientAccountNo, amount: NSInteger(10), description: description)
+                    .transfer(receipientAccountNo: receipientAccountNo, amount: amount, description: description)
                     .request(usingHttpService: httpService)
-                    .responseJSON { result in
-                        print("RESULT: ", result)
-                        let body = NSString(data: (result.request?.httpBody)!, encoding: String.Encoding.utf8.rawValue)
-                        print("request body: \(body)")
+                    .response { result in
                         guard [200, 201].contains(result.response?.statusCode), let data = result.data else { return }
                         do {
                             let result = try JSONDecoder().decode(Transfer.self, from: data)
-                            print(result)
                             completion(.success(result))
                         } catch {
                             completion(.failure(.failed))
@@ -136,7 +132,7 @@ class APIManager {
                 try APIRouter
                     .getTransaction
                     .request(usingHttpService: httpService)
-                    .responseJSON { result in
+                    .response { result in
                         guard [200, 201].contains(result.response?.statusCode), let data = result.data else { return }
                         do {
                             let result = try JSONDecoder().decode(TransactionResponse.self, from: data)
@@ -161,7 +157,7 @@ class APIManager {
                 try APIRouter
                     .getPayees
                     .request(usingHttpService: httpService)
-                    .responseJSON { result in
+                    .response { result in
                         guard [200, 201].contains(result.response?.statusCode), let data = result.data else { return }
                         do {
                             let result = try JSONDecoder().decode(PayeesResponse.self, from: data)

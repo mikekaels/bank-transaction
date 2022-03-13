@@ -104,9 +104,10 @@ class TransferVC: UIViewController {
             v.textColor = Colors.titleDark
             v.font = UIFont.systemFont(ofSize: 35, weight: .bold)
             v.keyboardType = .decimalPad
-            
+            v.layer.cornerRadius = 12
+//            v.layer.masksToBounds = true
             var bottomLine = CALayer() //CGRect(0.0, 75 - 1, 300, 1.0)
-            bottomLine.frame = CGRect(x: 0.0, y: 60, width: 300, height: 1.0)
+            bottomLine.frame = CGRect(x: 0.0, y: 60, width: 316, height: 1.0)
             bottomLine.backgroundColor = Colors.subTitleDark.cgColor
             v.borderStyle = .none
             v.layer.addSublayer(bottomLine)
@@ -130,17 +131,30 @@ class TransferVC: UIViewController {
     @objc func continueTapped() {
         
         guard let accountNo = self.payee?.accountNo else {
-            print("Got 1")
+            UIView.animate(withDuration: 0.6, delay: 0, options: [.autoreverse, .curveEaseInOut]) {
+                self.receiverView.backgroundColor = Colors.accent2
+            } completion: { complete in
+                self.receiverView.backgroundColor = Colors.titleLight
+            }
             return
         }
         
         guard let amount = self.tfAmount.text, let newAmount = Float(amount) else {
-            print("Got 2")
+            UIView.animate(withDuration: 0.6, delay: 0, options: [.autoreverse, .curveEaseInOut]) {
+                self.tfAmount.backgroundColor = Colors.accent2
+            } completion: { complete in
+                self.tfAmount.backgroundColor = Colors.titleLight
+            }
+            
             return
         }
         
         guard let description = self.self.tfNote.texfield.text else {
-            print("Got 3")
+            UIView.animate(withDuration: 0.6, delay: 0, options: [.autoreverse, .curveEaseInOut]) {
+                self.tfAmount.backgroundColor = Colors.accent2
+            } completion: { complete in
+                self.tfAmount.backgroundColor = Colors.titleLight
+            }
             return
         }
         

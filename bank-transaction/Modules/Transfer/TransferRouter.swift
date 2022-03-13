@@ -35,7 +35,6 @@ public class TransferRouter: TransferPresenterToRouterProtocol{
     func goToSelectReceiver(from: TransferVC) {
         let vc = SelectReceiverRouter.shared.createModule()
         vc.delegate = from
-        print("here")
         from.navigationController?.pushViewController(vc, animated: true)
     }
     

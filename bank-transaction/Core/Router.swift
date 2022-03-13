@@ -17,7 +17,7 @@ enum APIRouter {
     case getTransaction
     case getPayees
     case transfer(receipientAccountNo: String,
-                  amount: Int,
+                  amount: Float,
                   description: String)
 }
 
@@ -120,7 +120,7 @@ extension HttpRouter {
         url.appendPathComponent(path)
         
         var request = try URLRequest(url: url, method: method, headers: headers)
-        request = try URLEncoding.default.encode(request, with: body)
+        request = try JSONEncoding.default.encode(request, with: body)
         return request
     }
     

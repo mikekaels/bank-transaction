@@ -11,16 +11,24 @@ class DashboardVC: UIViewController {
     var presentor: DashboardViewToPresenterProtocol?
     public var delegate: DashboardDelegate?
     
-    var topUpItem: [String] = ["NETSPay", "SingTel Dash", "WeChat Pay", "Huawei Pay", "GrabPay"]
-    var billsItem: [String] = ["Electricity", "Water", "Phone Providers"]
+    var topUpItem: [[String]] = [
+        ["NETSPay", "https://nxtmag.tech/wp-content/uploads/2018/06/nets.jpg"],
+        ["SingTel Dash", "https://upload.wikimedia.org/wikipedia/commons/b/b5/Singtel_Logo_New.png"],
+        ["WeChat Pay", "https://toppng.com/uploads/preview/wechat-pay-logo-vector-11573849827dvyxvd9urz.png"],
+        ["Huawei Pay", "https://cf.shopee.co.id/file/3b635a42a1f1ffd235a9c5fededbeb12"],
+        ["GrabPay", "https://bigcowsoftware.com/ios4.png"]
+    ]
+    var billsItem:  [[String]] = [
+        ["Electricity", "https://cdn3.vectorstock.com/i/1000x1000/47/47/electricity-logo-electric-logo-and-icon-vector-27184747.jpg"],
+        ["Water", "https://static.vecteezy.com/system/resources/thumbnails/000/596/073/small/14052019-21.jpg"],
+        ["Phone Providers", "https://img1.pnghut.com/13/18/3/QsmjBb2r5a/internet-service-provider-wifi-wireless-network-text-generic-access.jpg"]
+    ]
     
     var balance: Float = 0.0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = ""
         setupUI()
-        print("TOKEN: ",KeyChainStore.fetchKeyChain(withKey: .token))
         self.topUpCollection.dataSource = self
         self.topUpCollection.delegate = self
         
@@ -34,6 +42,7 @@ class DashboardVC: UIViewController {
         super.viewWillAppear(animated)
         hideNavigationBar(animated: animated)
         self.tabBarController?.tabBar.isHidden = false
+        fetchData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -77,7 +86,7 @@ class DashboardVC: UIViewController {
             v.setImage(UIImage(systemName: "chevron.right.circle.fill"), for: .normal)
             v.imageView?.tintColor = Colors.accent1
             v.translatesAutoresizingMaskIntoConstraints = false
-//            v.addTarget(self, action: #selector(groupSelectTapped), for: .touchUpInside)
+            //            v.addTarget(self, action: #selector(groupSelectTapped), for: .touchUpInside)
         }
     
     let profileButton: UIButton = UIButton(type: .custom)
@@ -192,12 +201,12 @@ class DashboardVC: UIViewController {
         cell.lItem.text = item.receipient?.accountHolder
         cell.lPrice.text = item.amount?.description
         cell.lAccount.text = item.receipient?.accountNo
-//        cell.viewbackground.backgroundColor = UIColor.colorWith(name: item.colorBackgroud!)
-//        cell.lblUser.textColor = UIColor.colorWith(name: item.colorText!)
+        //        cell.viewbackground.backgroundColor = UIColor.colorWith(name: item.colorBackgroud!)
+        //        cell.lblUser.textColor = UIColor.colorWith(name: item.colorText!)
     }) { (item) in
         print(item)
     }.configure { v in
-        v.tableView.isScrollEnabled = false
+        //        v.tableView.isScrollEnabled = false
         v.tableView.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -216,7 +225,7 @@ class DashboardVC: UIViewController {
             v.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
             v.setTitleColor(Colors.accent1, for: .normal)
             v.translatesAutoresizingMaskIntoConstraints = false
-//            v.addTarget(self, action: #selector(UpcomingSeeAllButtonTapped), for: .touchUpInside)
+            //            v.addTarget(self, action: #selector(UpcomingSeeAllButtonTapped), for: .touchUpInside)
         }
     
     @objc func transferTapped() {
@@ -230,29 +239,32 @@ class DashboardVC: UIViewController {
     func getData() {
         let username = UserDefaultsManager.shared.getUsername()
         let accountNumber = UserDefaultsManager.shared.getAccountNumber()
-        presentor?.getBalance()
-        presentor?.getTransactions()
         
         DispatchQueue.main.async {
             self.greetingLabel.text = "Hello \(username)"
             self.selectAccount.setTitle("Account No: \(accountNumber)", for: .normal)
         }
     }
-
+    
+    func fetchData() {
+        presentor?.getBalance()
+        presentor?.getTransactions()
+    }
+    
 }
 
 extension DashboardVC: DashboardPresenterToViewProtocol {
     func didSuccessGetTransaction(data: [Transaction]) {
-        var newData = [Transaction]()
-        if data.count >= 3 {
-            for i in 0...2 {
-                newData.append(data[i])
-            }
-        } else {
-            newData.append(contentsOf: data)
-        }
+        //        var newData = [Transaction]()
+        //        if data.count >= 3 {
+        //            for i in 0...2 {
+        //                newData.append(data[i])
+        //            }
+        //        } else {
+        //            newData.append(contentsOf: data)
+        //        }
         DispatchQueue.main.async { [weak self] in
-            self?.transactionTableView.items = newData
+            self?.transactionTableView.items = data
         }
     }
     
@@ -401,25 +413,25 @@ extension DashboardVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
         switch collectionView {
         case topUpCollection:
             
-            if topUpItem[indexPath.row].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20)]).width + 20 < 80 {
+            if topUpItem[indexPath.row][0].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20)]).width + 20 < 80 {
                 
                 return CGSize(width: 100, height: 34)
                 
             } else {
                 
-                return CGSize(width: topUpItem[indexPath.item].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)]).width + 30, height: 34)
+                return CGSize(width: topUpItem[indexPath.item][0].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)]).width + 30, height: 34)
                 
             }
         case billsCollection:
-
-            if billsItem[indexPath.item].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)]).width + 20 < 80 {
-
+            
+            if billsItem[indexPath.item][0].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)]).width + 20 < 80 {
+                
                 return CGSize(width: 100, height: 34)
-
+                
             } else {
-
-                return CGSize(width: billsItem[indexPath.item].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)]).width + 30, height: 34)
-
+                
+                return CGSize(width: billsItem[indexPath.item][0].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)]).width + 30, height: 34)
+                
             }
         default:
             return CGSize(width: 100, height: 34)
@@ -441,11 +453,13 @@ extension DashboardVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
         switch collectionView {
         case topUpCollection:
             let cell = topUpCollection.dequeueReusableCell(withReuseIdentifier: Identifiers.TopUpCell, for: indexPath) as! ChipsCell
-            cell.lUser.text = topUpItem[indexPath.row]
+            cell.lUser.text = topUpItem[indexPath.row][0]
+            cell.profileImage.kf.setImage(with: URL(string: topUpItem[indexPath.row][1]))
             return cell
         case billsCollection:
             let cell = billsCollection.dequeueReusableCell(withReuseIdentifier: Identifiers.BillsCell, for: indexPath) as! ChipsCell
-            cell.lUser.text = billsItem[indexPath.row]
+            cell.lUser.text = billsItem[indexPath.row][0]
+            cell.profileImage.kf.setImage(with: URL(string: billsItem[indexPath.row][1]))
             return cell
         default:
             return UICollectionViewCell()
@@ -453,34 +467,34 @@ extension DashboardVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if collectionView == friendOweToYou {
-//            presentor?.goToUserDebtDetails(from: self)
-//        }
+        //        if collectionView == friendOweToYou {
+        //            presentor?.goToUserDebtDetails(from: self)
+        //        }
     }
     
-//    func chooseColor(color: String) -> UIColor {
-//        switch color {
-//        case "_00D8Ff":
-//            return Asset.Color._00D8Ff.color
-//        case "_0078Ff":
-//            return Asset.Color._0078Ff.color
-//        case "a9A9A9":
-//            return Asset.Color.a9A9A9.color
-//        case "ffa200":
-//            return Asset.Color.ffa200.color
-//        case "ffeed1":
-//            return Asset.Color.ffeed1.color
-//        case "_1F1F1F":
-//            return Asset.Color._1F1F1F.color
-//        case "e3F2Ff":
-//            return Asset.Color.e3F2Ff.color
-//        case "ffdf00":
-//            return Asset.Color.ffdf00.color
-//        case "c5Ffdf":
-//            return Asset.Color.c5Ffdf.color
-//        default:
-//            return Asset.Color.ffdf00.color
-//        }
-//    }
+    //    func chooseColor(color: String) -> UIColor {
+    //        switch color {
+    //        case "_00D8Ff":
+    //            return Asset.Color._00D8Ff.color
+    //        case "_0078Ff":
+    //            return Asset.Color._0078Ff.color
+    //        case "a9A9A9":
+    //            return Asset.Color.a9A9A9.color
+    //        case "ffa200":
+    //            return Asset.Color.ffa200.color
+    //        case "ffeed1":
+    //            return Asset.Color.ffeed1.color
+    //        case "_1F1F1F":
+    //            return Asset.Color._1F1F1F.color
+    //        case "e3F2Ff":
+    //            return Asset.Color.e3F2Ff.color
+    //        case "ffdf00":
+    //            return Asset.Color.ffdf00.color
+    //        case "c5Ffdf":
+    //            return Asset.Color.c5Ffdf.color
+    //        default:
+    //            return Asset.Color.ffdf00.color
+    //        }
+    //    }
     
 }
