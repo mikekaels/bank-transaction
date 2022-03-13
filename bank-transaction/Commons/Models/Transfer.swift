@@ -9,7 +9,7 @@ import Foundation
 
 struct Transfer: Codable {
     let status, transactionID: String?
-    let amount: Int?
+    let amount: Float?
     let transferDescription, recipientAccount: String?
 
     enum CodingKeys: String, CodingKey {

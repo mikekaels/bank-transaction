@@ -149,10 +149,10 @@ class TransferVC: UIViewController {
             return
         }
         
-        guard let description = self.self.tfNote.texfield.text else {
+        guard let description = self.tfNote.texfield.text else {
             return
         }
-        
+        print("GOT HERE")
         presentor?.transfer(receipientAccountNo: accountNo, amount: newAmount, description: description)
     }
 
