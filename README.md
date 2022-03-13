@@ -1,6 +1,6 @@
 # Simple Finance App
 
-![This is an image](https://i.ibb.co/rctGR3H/Group-1.png)
+![This is an image](https://i.ibb.co/2NxGF4c/Group-2-1.png)
 
 ## Features
 - Login, Register
@@ -91,10 +91,8 @@ If you already install cocoapods, in your terminal go to inside the project dire
 pod install
 ```
 ### 3. Open the .xcworkspace file
-![This is an image](https://i.ibb.co/WkFcwjQ/Screen-Shot-2022-02-12-at-13-09-25.png)
-open the file
+
 ### 4. Run
-![This is an image](https://i.ibb.co/98GNPjQ/Screen-Shot-2022-02-12-at-13-11-31.png)
 Select the simulator or device
 and Run the project!
 ### 5. Done
