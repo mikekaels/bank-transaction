@@ -25,6 +25,7 @@ class DashboardVC: UIViewController {
     ]
     
     var balance: Float = 0.0
+    var transactions: [Transaction] = [Transaction]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,11 +83,11 @@ class DashboardVC: UIViewController {
             v.setTitle("Select Account ", for: .normal)
             v.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
             v.setTitleColor(Colors.accent1, for: .normal)
-            v.semanticContentAttribute = .forceRightToLeft
-            v.setImage(UIImage(systemName: "chevron.right.circle.fill"), for: .normal)
-            v.imageView?.tintColor = Colors.accent1
             v.translatesAutoresizingMaskIntoConstraints = false
-            //            v.addTarget(self, action: #selector(groupSelectTapped), for: .touchUpInside)
+//            v.semanticContentAttribute = .forceRightToLeft
+//            v.setImage(UIImage(systemName: "chevron.right.circle.fill"), for: .normal)
+//            v.imageView?.tintColor = Colors.accent1
+//            v.addTarget(self, action: #selector(groupSelectTapped), for: .touchUpInside)
         }
     
     let profileButton: UIButton = UIButton(type: .custom)
@@ -201,12 +202,13 @@ class DashboardVC: UIViewController {
         cell.lItem.text = item.receipient?.accountHolder
         cell.lPrice.text = item.amount?.description
         cell.lAccount.text = item.receipient?.accountNo
+        cell.icon.image = UIImage(systemName: "repeat")
         //        cell.viewbackground.backgroundColor = UIColor.colorWith(name: item.colorBackgroud!)
         //        cell.lblUser.textColor = UIColor.colorWith(name: item.colorText!)
     }) { (item) in
         print(item)
     }.configure { v in
-        //        v.tableView.isScrollEnabled = false
+                v.tableView.isScrollEnabled = false
         v.tableView.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -225,7 +227,7 @@ class DashboardVC: UIViewController {
             v.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
             v.setTitleColor(Colors.accent1, for: .normal)
             v.translatesAutoresizingMaskIntoConstraints = false
-            //            v.addTarget(self, action: #selector(UpcomingSeeAllButtonTapped), for: .touchUpInside)
+            v.addTarget(self, action: #selector(seeAllButtonTapped), for: .touchUpInside)
         }
     
     @objc func transferTapped() {
@@ -251,20 +253,25 @@ class DashboardVC: UIViewController {
         presentor?.getTransactions()
     }
     
+    @objc func seeAllButtonTapped() {
+        presentor?.goToTransaction(data: self.transactions, from: self)
+    }
+    
 }
 
 extension DashboardVC: DashboardPresenterToViewProtocol {
     func didSuccessGetTransaction(data: [Transaction]) {
-        //        var newData = [Transaction]()
-        //        if data.count >= 3 {
-        //            for i in 0...2 {
-        //                newData.append(data[i])
-        //            }
-        //        } else {
-        //            newData.append(contentsOf: data)
-        //        }
+        self.transactions = data
+        var newData = [Transaction]()
+        if data.count >= 3 {
+            for i in 0...2 {
+                newData.append(data[i])
+            }
+        } else {
+            newData.append(contentsOf: data)
+        }
         DispatchQueue.main.async { [weak self] in
-            self?.transactionTableView.items = data
+            self?.transactionTableView.items = newData
         }
     }
     
@@ -273,10 +280,9 @@ extension DashboardVC: DashboardPresenterToViewProtocol {
     }
     
     func didSuccessGetBalance(data: Balance) {
-        print("BALANCE: ",data)
         self.balance = data.balance ?? 0.0
         DispatchQueue.main.async { [weak self] in
-            self?.lblBalanceAmount.text = "\(String(describing: data.balance ?? 999999))"
+            self?.lblBalanceAmount.text = "SGD \(data.balance ?? 999999)"
         }
     }
     

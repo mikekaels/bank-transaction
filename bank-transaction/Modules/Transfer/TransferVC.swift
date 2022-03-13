@@ -17,7 +17,7 @@ class TransferVC: UIViewController {
         title = "Transfer"
         
         setupUI()
-        self.lblBalanceAmount.text = String(self.balance)
+        self.lblBalanceAmount.text = "SGD \(self.balance)"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +60,7 @@ class TransferVC: UIViewController {
     
     let ivReceiver = UIImageView()
         .configure { v in
-            v.kf.setImage(with: URL(string: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"))
+            v.kf.setImage(with: URL(string: "https://wallpaper.dog/small/20487246.jpg"))
             v.kf.indicatorType = .activity
             v.contentMode = .scaleAspectFill
             v.clipsToBounds = true
@@ -75,7 +75,7 @@ class TransferVC: UIViewController {
             v.text = "Select Payee"
             v.textAlignment = .left
             v.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-            v.textColor = Colors.accent1
+            v.textColor = Colors.titleDark
             v.snp.makeConstraints { make in
                 make.width.equalTo(180)
             }
@@ -84,7 +84,7 @@ class TransferVC: UIViewController {
     let btnSelectReceiver = UIButton()
         .configure { v in
             v.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-            v.imageView?.tintColor = Colors.accent1
+            v.imageView?.tintColor = Colors.titleDark
             v.addTarget(self, action: #selector(selectReceverTapper), for: .touchUpInside)
         }
     
@@ -131,7 +131,7 @@ class TransferVC: UIViewController {
     @objc func continueTapped() {
         
         guard let accountNo = self.payee?.accountNo else {
-            UIView.animate(withDuration: 0.6, delay: 0, options: [.autoreverse, .curveEaseInOut]) {
+            UIView.animate(withDuration: 0.5, delay: 0, options: [.autoreverse, .repeat, .allowUserInteraction]) {
                 self.receiverView.backgroundColor = Colors.accent2
             } completion: { complete in
                 self.receiverView.backgroundColor = Colors.titleLight
@@ -140,7 +140,7 @@ class TransferVC: UIViewController {
         }
         
         guard let amount = self.tfAmount.text, let newAmount = Float(amount) else {
-            UIView.animate(withDuration: 0.6, delay: 0, options: [.autoreverse, .curveEaseInOut]) {
+            UIView.animate(withDuration: 0.6, delay: 0, options: [.autoreverse]) {
                 self.tfAmount.backgroundColor = Colors.accent2
             } completion: { complete in
                 self.tfAmount.backgroundColor = Colors.titleLight
@@ -150,15 +150,9 @@ class TransferVC: UIViewController {
         }
         
         guard let description = self.self.tfNote.texfield.text else {
-            UIView.animate(withDuration: 0.6, delay: 0, options: [.autoreverse, .curveEaseInOut]) {
-                self.tfAmount.backgroundColor = Colors.accent2
-            } completion: { complete in
-                self.tfAmount.backgroundColor = Colors.titleLight
-            }
             return
         }
         
-        print(newAmount, type(of: newAmount))
         presentor?.transfer(receipientAccountNo: accountNo, amount: newAmount, description: description)
     }
 
@@ -166,7 +160,6 @@ class TransferVC: UIViewController {
 
 extension TransferVC: TransferPresenterToViewProtocol {
     func didSuccessTransfer(data: Transfer) {
-        print("SUCCESS!!!!!!")
         presentor?.goBack(from: self)
     }
     
@@ -182,7 +175,8 @@ extension TransferVC: SelectReceiverDelegate {
         self.payee = data
         DispatchQueue.main.async { [weak self] in
             self?.btnReceiver.text = self?.payee?.name
-            self?.receiverView.backgroundColor = Colors.accent2
+            self?.receiverView.backgroundColor = Colors.accent3
+            self?.ivReceiver.kf.setImage(with: URL(string: "https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg"))
         }
     }
 }

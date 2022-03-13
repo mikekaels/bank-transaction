@@ -22,6 +22,10 @@ class DashboardPresenter: DashboardViewToPresenterProtocol {
         router?.goToLogin(from: from)
     }
     
+    func goToTransaction(data: [Transaction], from: DashboardVC) {
+        router?.goToTransaction(data: data, from: from)
+    }
+    
     func getBalance() {
         interactor?.getBalance()
     }

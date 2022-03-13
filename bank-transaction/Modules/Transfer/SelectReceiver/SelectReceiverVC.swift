@@ -100,7 +100,7 @@ class ReceiverCell: UITableViewCell {
     
     let image = UIImageView()
         .configure { v in
-            v.kf.setImage(with: URL(string: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"))
+            v.kf.setImage(with: URL(string: "https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg"))
             v.tintColor = Colors.accent1
             v.snp.makeConstraints { make in
                 make.height.width.equalTo(45)

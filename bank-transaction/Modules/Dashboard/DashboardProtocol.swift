@@ -16,6 +16,7 @@ protocol DashboardViewToPresenterProtocol: AnyObject {
     func goToTransfer(balance: Float, from: DashboardVC)
     func goToProfile(from: DashboardVC)
     func goToLogin(from: DashboardVC)
+    func goToTransaction(data: [Transaction], from: DashboardVC)
     
     func getBalance()
     func getTransactions()
@@ -26,6 +27,7 @@ protocol DashboardPresenterToRouterProtocol: AnyObject {
     func goToTransfer(balance: Float, from: DashboardVC)
     func goToProfile(from: DashboardVC)
     func goToLogin(from: DashboardVC)
+    func goToTransaction(data: [Transaction], from: DashboardVC)
 }
 
 protocol DashboardPresenterToViewProtocol: AnyObject {

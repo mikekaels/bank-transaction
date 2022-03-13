@@ -58,4 +58,10 @@ public class DashboardRouter: DashboardPresenterToRouterProtocol{
             from.present(navRootView, animated: true)
         }
     }
+    
+    func goToTransaction(data: [Transaction], from: DashboardVC) {
+        let vc = TransactionRouter.shared.createModule()
+        vc.transactionTableView.items = data
+        from.navigationController?.pushViewController(vc, animated: true)
+    }
 }
