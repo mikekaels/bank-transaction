@@ -85,6 +85,7 @@ class TransferVC: UIViewController {
         .configure { v in
             v.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             v.imageView?.tintColor = Colors.titleDark
+            v.backgroundColor = .clear
             v.addTarget(self, action: #selector(selectReceverTapper), for: .touchUpInside)
         }
     
