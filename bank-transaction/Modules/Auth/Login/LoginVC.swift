@@ -49,6 +49,7 @@ class LoginVC: UIViewController {
     
 //MARK: - Function
     @objc func loginTapped() {
+        btnLogin.showLoading()
         let username = validatorUsername()
         let password = validatorPassword()
         
@@ -65,6 +66,7 @@ class LoginVC: UIViewController {
 //MARK: - Delegate
 extension LoginVC: LoginPresenterToViewProtocol {
     func didSuccessLogin(data: AuthModel) {
+        btnLogin.hideLoading()
         presentor?.goToDashboard(from: self)
     }
     

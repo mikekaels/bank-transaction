@@ -86,6 +86,7 @@
 		BD5C0AFD27DBC95B004400E2 /* SelectReceiverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AF727DBC95B004400E2 /* SelectReceiverProtocol.swift */; };
 		BD5C0AFE27DBC95B004400E2 /* SelectReceiverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AF827DBC95B004400E2 /* SelectReceiverVC.swift */; };
 		BD5C0B0027DBCEB8004400E2 /* Receiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C0AFF27DBCEB8004400E2 /* Receiver.swift */; };
+		BD97466C27DF7D7F003FDA35 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD97466B27DF7D7F003FDA35 /* LoadingButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -172,6 +173,7 @@
 		BD5C0AF727DBC95B004400E2 /* SelectReceiverProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectReceiverProtocol.swift; sourceTree = "<group>"; };
 		BD5C0AF827DBC95B004400E2 /* SelectReceiverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectReceiverVC.swift; sourceTree = "<group>"; };
 		BD5C0AFF27DBCEB8004400E2 /* Receiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receiver.swift; sourceTree = "<group>"; };
+		BD97466B27DF7D7F003FDA35 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +297,7 @@
 				BD58D50927DD058A007A547C /* Alertable.swift */,
 				BD58D50B27DD06C0007A547C /* Keychain.swift */,
 				BD58D50D27DD0C36007A547C /* UserDefault.swift */,
+				BD97466B27DF7D7F003FDA35 /* LoadingButton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				BD5C0AE027DB60D1004400E2 /* CustomButton.swift in Sources */,
 				BD5C0ACE27DB4984004400E2 /* LoginVC.swift in Sources */,
 				BD5C0ABB27DB4713004400E2 /* TransferModels.swift in Sources */,
+				BD97466C27DF7D7F003FDA35 /* LoadingButton.swift in Sources */,
 				BD5C0AFD27DBC95B004400E2 /* SelectReceiverProtocol.swift in Sources */,
 				BD5C0B0027DBCEB8004400E2 /* Receiver.swift in Sources */,
 				BD5C0ACC27DB4984004400E2 /* LoginInteractor.swift in Sources */,

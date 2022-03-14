@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CustomButton: UIButton {
+class CustomButton: LoadingButton {
 
     required init() {
         super.init(frame: .zero)

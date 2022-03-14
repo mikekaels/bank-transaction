@@ -51,6 +51,7 @@ class RegisterVC: UIViewController {
         }
     
     @objc func registerTapped() {
+        btnRegister.showLoading()
         let username = validatorUsername()
         let password = validatorPasswordAndConfirmation()
         if username.isValid && password.isValid {
@@ -61,6 +62,7 @@ class RegisterVC: UIViewController {
 
 extension RegisterVC: RegisterPresenterToViewProtocol {
     func didSuccessRegister(data: AuthModel) {
+        btnRegister.hideLoading()
         presentor?.dismiss(from: self)
     }
     

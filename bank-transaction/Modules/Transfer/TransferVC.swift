@@ -81,7 +81,7 @@ class TransferVC: UIViewController {
             }
         }
     
-    let btnSelectReceiver = UIButton()
+    let btnSelectReceiver = CustomButton()
         .configure { v in
             v.setImage(UIImage(systemName: "chevron.right"), for: .normal)
             v.imageView?.tintColor = Colors.titleDark
@@ -129,7 +129,7 @@ class TransferVC: UIViewController {
     }
     
     @objc func continueTapped() {
-        
+        btnContinue.showLoading()
         guard let accountNo = self.payee?.accountNo else {
             UIView.animate(withDuration: 0.5, delay: 0, options: [.autoreverse, .repeat, .allowUserInteraction]) {
                 self.receiverView.backgroundColor = Colors.accent2
@@ -160,6 +160,7 @@ class TransferVC: UIViewController {
 
 extension TransferVC: TransferPresenterToViewProtocol {
     func didSuccessTransfer(data: Transfer) {
+        btnContinue.hideLoading()
         presentor?.goBack(from: self)
     }
     
