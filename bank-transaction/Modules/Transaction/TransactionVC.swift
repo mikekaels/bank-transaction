@@ -26,7 +26,7 @@ class TransactionVC: UIViewController {
     
     let transactionTableView = TransactionTableViewController(items: [], configure: { (cell: SubtitleAndIconCell, item: Transaction) in
         cell.lItem.text = item.receipient?.accountHolder
-        cell.lPrice.text = item.amount?.description
+        cell.lPrice.text = "SGD \(String(describing: item.amount!.description))"
         cell.lAccount.text = item.receipient?.accountNo
     }) { (item) in
         print(item)
