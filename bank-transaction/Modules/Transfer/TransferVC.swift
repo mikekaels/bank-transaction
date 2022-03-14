@@ -18,6 +18,7 @@ class TransferVC: UIViewController {
         
         setupUI()
         self.lblBalanceAmount.text = "SGD \(self.balance)"
+        tfAmount.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -137,20 +138,22 @@ class TransferVC: UIViewController {
             } completion: { complete in
                 self.receiverView.backgroundColor = Colors.titleLight
             }
+            btnContinue.hideLoading()
             return
         }
         
         guard let amount = self.tfAmount.text, let newAmount = Float(amount) else {
-            UIView.animate(withDuration: 0.6, delay: 0, options: [.autoreverse]) {
+            UIView.animate(withDuration: 0.6, delay: 0, options: [.autoreverse, .allowUserInteraction, .repeat]) {
                 self.tfAmount.backgroundColor = Colors.accent2
             } completion: { complete in
                 self.tfAmount.backgroundColor = Colors.titleLight
             }
-            
+            btnContinue.hideLoading()
             return
         }
         
         guard let description = self.tfNote.texfield.text else {
+            btnContinue.hideLoading()
             return
         }
         print("GOT HERE")
@@ -172,13 +175,19 @@ extension TransferVC: TransferPresenterToViewProtocol {
     
 }
 
-extension TransferVC: SelectReceiverDelegate {
+extension TransferVC: SelectReceiverDelegate, UITextFieldDelegate {
     func didSelectReceiver(data: Payee) {
         self.payee = data
         DispatchQueue.main.async { [weak self] in
             self?.btnReceiver.text = self?.payee?.name
             self?.receiverView.backgroundColor = Colors.accent3
             self?.ivReceiver.kf.setImage(with: URL(string: "https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg"))
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == self.tfAmount {
+            self.tfAmount.backgroundColor = Colors.titleLight
         }
     }
 }
