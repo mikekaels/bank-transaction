@@ -49,8 +49,8 @@ extension TransactionVC {
         view.addSubview(transactionTableView.view)
         transactionTableView.view.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.bottom.equalTo(view).offset(15).inset(15)
-            
+            make.leading.trailing.equalTo(view).offset(15).inset(15)
+            make.bottom.equalTo(view)
         }
     }
 }
